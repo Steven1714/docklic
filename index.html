@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doclick — Guía médica con video</title>
+<meta name="description" content="La guía médica donde los pacientes te ven antes de escribirte. Perfil con video mensual, WhatsApp directo. Únete gratis.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230D4A3A'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia' font-weight='bold' font-size='55' fill='white'%3ED%3C/text%3E%3C/svg%3E">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Doclick — Guía médica con video">
+<meta property="og:description" content="La guía donde los pacientes te ven antes de escribirte. Perfil con video mensual, WhatsApp directo.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://doclick.net">
+<meta property="og:image" content="https://doclick.net/images/og-image.png">
+<meta property="og:locale" content="es">
+<meta property="og:site_name" content="Doclick">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Doclick — Guía médica con video">
+<meta name="twitter:description" content="La guía donde los pacientes te ven antes de escribirte.">
+<meta name="twitter:image" content="https://doclick.net/images/og-image.png">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalWebPage",
+  "name": "Doclick — Guía médica con video",
+  "description": "Directorio médico digital. Perfiles con video mensual y contacto directo por WhatsApp.",
+  "url": "https://doclick.net"
+}
+</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<!-- Styles -->
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="nav" id="navbar">
+  <div class="wrap">
+    <a href="index.html" class="logo" aria-label="Doclick — Inicio">
+      <div class="logo-mark" aria-hidden="true">D</div>
+      Doclick
+    </a>
+    <div class="nav-actions">
+      <a href="#directorio" class="btn btn-ghost" style="font-size:13px;padding:10px 16px;">Buscar médico</a>
+      <a class="btn btn-primary" id="nav-cta" href="#" target="_blank" rel="noopener" style="font-size:13px;padding:10px 16px;" aria-label="Soy médico, quiero mi perfil gratis">Soy médico, quiero mi perfil</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero hero--video" aria-label="Bienvenida">
+    <video class="hero-bg-video" autoplay muted loop playsinline poster="images/hero-poster.jpg" aria-hidden="true">
+      <source src="videos/hero-domingo.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="wrap">
+      <span class="eyebrow">Guía médica en video</span>
+      <h1>Tu práctica médica, <em>en video.</em></h1>
+      <p class="hero-sub">La guía donde los pacientes te ven antes de escribirte. Un video mensual. Un perfil que trabaja mientras tú atiendes.</p>
+      <div class="hero-ctas">
+        <a href="#directorio" class="btn btn-primary" style="padding:16px 28px;font-size:15px;" aria-label="Buscar médico en el directorio">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          Buscar médico
+        </a>
+        <a class="btn btn-copper" id="hero-cta" href="#" target="_blank" rel="noopener" style="padding:16px 28px;font-size:15px;" aria-label="Unirme gratis como médico">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          Soy médico, únete gratis
+        </a>
+      </div>
+      <div class="social-bar" role="region" aria-label="Estadísticas de Doclick">
+        <div class="social-item"><div class="social-number is-loading" id="counter-docs">Cargando…</div><div class="social-label">Médicos verificados</div></div>
+        <div class="social-item"><div class="social-number is-loading" id="counter-specs">Cargando…</div><div class="social-label">Especialidades</div></div>
+        <div class="social-item"><div class="social-number is-loading" id="counter-spots" style="color:var(--copper);">Cargando…</div><div class="social-label">Cupos fundadores</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-section" aria-labelledby="why-heading">
+    <div class="wrap">
+      <div style="text-align:center;max-width:52ch;margin:0 auto;">
+        <span class="eyebrow">¿Por qué Doclick?</span>
+        <h2 id="why-heading" style="font-size:28px;">No es un directorio. Es tu vitrina.</h2>
+        <p style="color:var(--muted);margin-top:12px;font-size:16px;">Los pacientes no eligen por teléfono. Eligen por confianza. Y la confianza se ve.</p>
+      </div>
+      <div class="why-grid">
+        <article class="why-card">
+          <div class="why-number" aria-hidden="true">01</div>
+          <h3>El paciente te ve antes de escribirte</h3>
+          <p>Un video de 60 segundos responde las preguntas más comunes. Llegan a tu WhatsApp ya convencidos, no curiosos.</p>
+        </article>
+        <article class="why-card">
+          <div class="why-number" aria-hidden="true">02</div>
+          <h3>Tu perfil trabaja 24 horas</h3>
+          <p>Mientras atiendes, tu video explica qué haces, cómo trabajas y cómo contactarte. Es tu consultorio digital, siempre abierto.</p>
+        </article>
+        <article class="why-card">
+          <div class="why-number" aria-hidden="true">03</div>
+          <h3>Tú controlas todo</h3>
+          <p>WhatsApp directo. Sin intermediarios. Sin comisiones. Sin algoritmos que escondan tu perfil. Tú y tu paciente, punto.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="directory-section" id="directorio" aria-labelledby="dir-heading">
+    <div class="wrap">
+      <div class="dir-header">
+        <div><span class="eyebrow">Directorio</span><h2 id="dir-heading">Médicos verificados</h2></div>
+        <div class="dir-search" role="search">
+          <input type="text" id="search-input" placeholder="Buscar por nombre o especialidad..." aria-label="Buscar médico por nombre o especialidad">
+          <select id="specialty-filter" aria-label="Filtrar por especialidad médica"><option value="">Todas las especialidades</option></select>
+          <label class="video-filter" aria-label="Mostrar solo médicos con video"><input type="checkbox" id="video-filter" aria-checked="false">Solo con video</label>
+        </div>
+      </div>
+      <div class="directory-loading" id="directory-loading" role="status" aria-live="polite"><p>Buscando médicos…</p></div>
+      <div class="doc-grid" id="doc-grid" role="list" aria-label="Listado de médicos"></div>
+      <div class="empty-state" id="empty-state" role="status" aria-live="polite">
+        <div style="width:56px;height:56px;background:var(--surface-2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:6px;" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </div>
+        <h3>No encontramos médicos</h3>
+        <p>Prueba con otros términos de búsqueda o ajusta los filtros aplicados.</p>
+        <button class="btn btn-ghost" onclick="resetFilters()">Ver todos los médicos</button>
+      </div>
+      <div style="text-align:center;margin-top:28px;">
+        <p style="color:var(--muted);font-size:14px;margin-bottom:10px;">¿Eres médico y quieres aparecer aquí?</p>
+        <a class="btn btn-primary" id="dir-cta" href="#" target="_blank" rel="noopener" aria-label="Unirme gratis al directorio de médicos">Únete gratis al directorio</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="process-section" aria-labelledby="process-heading">
+    <div class="wrap">
+      <span class="eyebrow" style="display:block;text-align:center;">Así de simple</span>
+      <h2 id="process-heading" style="text-align:center;">Tu perfil activo en 48 horas</h2>
+      <p class="process-sub">Tres pasos. Cero papeleo. Cero costo.</p>
+      <div class="process-grid">
+        <article class="process-card"><div class="process-step" aria-hidden="true">1</div><h3>Escríbenos por WhatsApp</h3><p>Nos dices tu nombre, especialidad y número. Te guiamos en todo el proceso.</p></article>
+        <article class="process-card"><div class="process-step" aria-hidden="true">2</div><h3>Grabas un video de 60 segundos</h3><p>Con tu celular, en tu consultorio. Te damos un script. Nosotros lo editamos.</p></article>
+        <article class="process-card"><div class="process-step" aria-hidden="true">3</div><h3>Tu perfil está en línea</h3><p>Link listo para compartir. Los pacientes te encuentran y escriben directo.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing-section" aria-labelledby="pricing-heading">
+    <div class="wrap">
+      <span class="eyebrow" style="display:block;text-align:center;">Precios</span>
+      <h2 id="pricing-heading" style="text-align:center;">Sin letra pequeña</h2>
+      <p class="pricing-sub">Transparencia total. Sin cargos sorpresa. Sin compromisos ocultos.</p>
+      <div class="pricing-grid">
+        <article class="price-card featured">
+          <div class="price-badge">Recomendado</div>
+          <h3>Perfil en Doclick</h3>
+          <div class="price-amount">Gratis <span>/ para siempre</span></div>
+          <p class="price-desc">Para los primeros 5 médicos fundadores. Perfil, video y visibilidad, sin costo.</p>
+          <ul class="price-features">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Perfil con foto y datos</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>WhatsApp directo</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Apareces en búsquedas</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Badge "Fundador" exclusivo</li>
+          </ul>
+          <a class="btn btn-primary" id="price-cta-free" href="#" target="_blank" rel="noopener" style="width:100%;" aria-label="Quiero mi perfil médico gratis">Quiero mi perfil gratis</a>
+        </article>
+        <article class="price-card">
+          <h3>Video + Landing Pro</h3>
+          <div class="price-amount" style="color:var(--copper);font-size:28px;">Consultar</div>
+          <p class="price-desc">Servicio aparte, totalmente opcional. Para médicos que quieren más.</p>
+          <ul class="price-features">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Video mensual profesional</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Landing page personalizada</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>WhatsApp automatizado</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Estadísticas de visitas</li>
+          </ul>
+          <a class="btn btn-ghost" id="price-cta-pro" href="#" target="_blank" rel="noopener" style="width:100%;" aria-label="Más información sobre plan Pro">Más información</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section" aria-labelledby="faq-heading">
+    <div class="wrap">
+      <span class="eyebrow" style="display:block;text-align:center;">Preguntas frecuentes</span>
+      <h2 id="faq-heading" style="text-align:center;">¿Tienes dudas? Te las resolvemos</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">¿Tengo que pagar algo por aparecer en el directorio?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="faq-answer">No. El perfil básico en Doclick es 100% gratuito para siempre, especialmente para los primeros 5 médicos fundadores. No hay costos ocultos ni suscripciones obligatorias.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">¿Quién graba el video de mi perfil?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="faq-answer">Tú lo grabas con tu celular en unos minutos, en tu propio consultorio. Te damos un script simple y guía paso a paso. Nosotros nos encargamos de editarlo, ponerle música sutil y subirlo a tu perfil.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">¿Y si no tengo tiempo para grabar un video?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="faq-answer">Tu perfil funciona perfectamente sin video. Puedes empezar solo con foto, nombre, especialidad y WhatsApp. Cuando quieras, agregamos el video sin costo adicional.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">¿Cómo me contactan los pacientes?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="faq-answer">Directo a tu WhatsApp. El paciente ve tu perfil, lee tu especialidad, ve tu video si lo tienes, y te escribe por WhatsApp con un solo toque. Tú controlas tu agenda, precios y disponibilidad.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">¿Qué pasa con mi privacidad y datos?<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="faq-answer">Solo publicamos lo que tú autorices: nombre, especialidad, foto o video, y número de WhatsApp para consultas. No compartimos tu información con terceros ni mostramos datos personales sensibles.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-final" aria-label="Llamado a la acción para médicos">
+    <div class="wrap">
+      <div class="cta-banner">
+        <div>
+          <h2>Sé de los primeros médicos en Doclick.</h2>
+          <p>Perfil gratis. Video opcional. Pacientes buscando hoy. Los primeros 5 cupos fundadores no pagan nunca.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a class="btn btn-copper" id="final-cta-wa" href="#" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp para unirme como médico">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              Escribir por WhatsApp
+            </a>
+            <!-- TODO: "Déjanos tu número" no tiene destino definido todavía (no hay backend/formulario
+                 de captura de leads). Oculto hasta que se decida a dónde va esto: ¿un segundo número
+                 de WhatsApp, un formulario, o se elimina del todo? -->
+            <a class="btn btn-outline-copper" id="final-cta-tel" href="#" style="display:none;color:#fff;border-color:rgba(255,255,255,0.4);" aria-label="Déjanos tu número de teléfono">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Déjanos tu número
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-brand"><div class="logo-mark" style="width:26px;height:26px;font-size:11px;" aria-hidden="true">D</div>© 2026 Doclick — guía médica con video</div>
+    <div class="mono">Hecho por médicos, para médicos.</div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>10);});
+const joinLink=buildWaLink(DOCLICK.contactWhatsapp,DOCLICK.contactMessage);
+['nav-cta','hero-cta','dir-cta','price-cta-free','price-cta-pro','final-cta-wa'].forEach(id=>{const el=document.getElementById(id);if(el)el.href=joinLink;});
+
+function animateCounter(el,target,duration=1500){let start=0;const step=20;const increment=target/(duration/step);const timer=setInterval(()=>{start+=increment;if(start>=target){el.textContent=target;clearInterval(timer);}else el.textContent=Math.floor(start);},step);}
+setTimeout(()=>{['counter-docs','counter-specs','counter-spots'].forEach(id=>document.getElementById(id).classList.remove('is-loading'));animateCounter(document.getElementById('counter-docs'),DOCTORS.length);animateCounter(document.getElementById('counter-specs'),[...new Set(DOCTORS.map(d=>d.specialty))].length);animateCounter(document.getElementById('counter-spots'),Math.max(0,DOCLICK.foundingSpotsTotal-DOCLICK.foundingSpotsTaken));},400);
+
+const specSel=document.getElementById('specialty-filter');
+[...new Set(DOCTORS.map(d=>d.specialty))].sort().forEach(s=>{const o=document.createElement('option');o.value=s;o.textContent=s;specSel.appendChild(o);});
+
+const grid=document.getElementById('doc-grid');
+const emptyState=document.getElementById('empty-state');
+const playIcon=`<svg width="8" height="8" viewBox="0 0 18 18" fill="none"><path d="M4.5 2.5L14.5 9L4.5 15.5V2.5Z" fill="#2B1B02"/></svg>`;
+
+function render(list){grid.innerHTML='';if(!list.length){grid.style.display='none';emptyState.style.display='flex';return;}grid.style.display='grid';emptyState.style.display='none';list.forEach((d,i)=>{const card=document.createElement('a');card.className='doc-card';card.href=`perfil.html?id=${d.id}`;card.setAttribute('role','listitem');card.style.animationDelay=`${i*0.08}s`;card.setAttribute('aria-label',`Perfil de ${d.name}, ${d.specialty}`);card.innerHTML=`<div class="doc-top"><div class="avatar-wrap"><div class="avatar">${d.photoUrl?`<img src="${d.photoUrl}" alt="${d.name}">`:d.initials}</div>${d.hasVideo?`<div class="video-badge">${playIcon}</div>`:''}</div><div><div class="doc-name">${d.name}</div><div class="doc-specialty">${d.specialty}</div></div></div><div class="doc-meta">${d.founding?'<span class="tag tag-copper">Fundador</span>':''}</div><div class="doc-actions"><span class="btn btn-ghost">Ver perfil</span><a class="btn btn-primary" href="${buildWaLink(d.whatsappNumber,'Hola, vi tu perfil en Doclick y quiero agendar una cita.')}" target="_blank" rel="noopener" onclick="event.stopPropagation()" aria-label="Agendar cita por WhatsApp con ${d.name}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>WhatsApp</a></div>`;grid.appendChild(card);});}
+
+function applyFilters(){const q=document.getElementById('search-input').value.trim().toLowerCase();const spec=specSel.value;const videoOnly=document.getElementById('video-filter').checked;render(DOCTORS.filter(d=>{const mq=!q||d.name.toLowerCase().includes(q)||d.specialty.toLowerCase().includes(q);const ms=!spec||d.specialty===spec;const mv=!videoOnly||d.hasVideo;return mq&&ms&&mv;}));}
+function resetFilters(){document.getElementById('search-input').value='';specSel.value='';document.getElementById('video-filter').checked=false;applyFilters();}
+
+document.getElementById('search-input').addEventListener('input',applyFilters);
+specSel.addEventListener('change',applyFilters);
+document.getElementById('video-filter').addEventListener('change',applyFilters);
+document.getElementById('directory-loading').style.display='none';
+render(DOCTORS);
+
+function toggleFaq(btn){const answer=btn.nextElementSibling;const isOpen=answer.classList.contains('open');document.querySelectorAll('.faq-answer').forEach(a=>a.classList.remove('open'));document.querySelectorAll('.faq-question').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-expanded','false');});if(!isOpen){answer.classList.add('open');btn.classList.add('active');btn.setAttribute('aria-expanded','true');}}
+</script>
+
+</body>
+</html>
