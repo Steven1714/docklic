@@ -9,7 +9,7 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-QHY2PM07NM');
+  gtag('config', 'G-QHY2PM07NM', {send_page_view: false});
 </script>
 <title id="page-title">Doclick — Perfil médico</title>
 <meta name="description" id="page-desc" content="Perfil médico verificado en Doclick.">
@@ -64,6 +64,7 @@ const doctor=getDoctorById(doctorId);
 const main=document.getElementById('profile-main');
 
 if(!doctor){
+  gtag('event','page_view');
   main.innerHTML=`<div class="wrap" style="padding:120px 24px;text-align:center;"><h1 style="font-size:28px;margin-bottom:16px;font-family:'Playfair Display',serif;">Médico no encontrado</h1><p style="color:var(--muted);margin-bottom:24px;">El perfil que buscas no existe o ha sido removido.</p><a href="index.html#directorio" class="btn btn-primary">Ver directorio médico</a></div>`;
 } else {
   const fullName=`${doctor.title} ${doctor.name}`;
@@ -72,6 +73,7 @@ if(!doctor){
   document.title=pageTitle;
   document.getElementById('page-title').textContent=pageTitle;
   document.getElementById('page-desc').content=`${doctor.specialty} en ${city}. Perfil con video, WhatsApp directo.`;
+  gtag('event','page_view',{page_title:pageTitle});
   gtag('event','view_profile',{doctor_id:doctor.id});
   document.getElementById('og-title').content=pageTitle;
   document.getElementById('og-desc').content=doctor.shortBio;
