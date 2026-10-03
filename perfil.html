@@ -114,7 +114,7 @@ if(!doctor){
 
   const bioHtml=doctor.longBio?`
     <section class="profile-section" aria-labelledby="bio-heading">
-      <div class="wrap"><h2 id="bio-heading">Sobre ${doctor.title} ${doctor.name.split(' ').pop()}</h2><p class="bio-text">${doctor.longBio}</p></div>
+      <div class="wrap"><h2 id="bio-heading">Sobre ${fullName}</h2><p class="bio-text">${doctor.longBio}</p></div>
     </section>`:'';
 
   const pastVideosHtml=(doctor.pastVideos||[]).length?`
@@ -131,7 +131,7 @@ if(!doctor){
         <h2 id="location-heading">Ubicación y horario</h2>
         <div class="location-card">
           <div class="location-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-          <div class="location-details"><h3>${doctor.address}</h3>${doctor.schedule?`<p>${doctor.schedule}</p>`:''}<a href="${buildMapsLink(doctor.mapQuery||doctor.address)}" target="_blank" rel="noopener">Ver en Google Maps →</a></div>
+          <div class="location-details"><h3>${doctor.address}</h3>${doctor.schedule?`<p>${doctor.schedule}</p>`:''}<a href="${doctor.mapUrl||buildMapsLink(doctor.mapQuery||doctor.address)}" target="_blank" rel="noopener">Ver en Google Maps →</a></div>
         </div>
       </div>
     </section>`:'';
