@@ -20,7 +20,7 @@ const DOCTORS = [
     cmm: "",
     hasVideo: false,
     photoUrl: "images/dr-domingo-guerra.jpg",
-    whatsappNumber: "58XXXXXXXXXX",
+    whatsappNumber: "584147667008",
     instagramHandle: "",
     shortBio: "Neurocirujano. [Pendiente: confirmar bio con el Dr. Guerra antes de publicar]",
     longBio: "[Pendiente: el Dr. Guerra aún no ha grabado su video de caso ni confirmado el texto de su bio. Este perfil está cargado como primer fundador real, con foto aprobada, mientras se completa el resto de su información.]",
@@ -74,7 +74,7 @@ const DOCTORS = [
     specialties: ["Cerebro", "Columna vertebral", "Nervios periféricos", "Hernias discales", "Tumores", "Traumatismos", "ACV y aneurismas"],
     address: "ISAMICA, Edificio de Consulta Externa, Consultorio 1, Planta Baja",
     mapUrl: "https://maps.app.goo.gl/zUBjhBA6wU7VqdEr8",
-    schedule: "",
+    schedule: "Lunes a viernes: 12:00pm–3:00pm",
     heroVideo: { title: "Conoce al Dr. Dióver González", duration: "1:38", youtubeId: "N9Sx3-YjhIY" },
     pastVideos: []
   }
