@@ -18,6 +18,15 @@
 | `data.js` | Datos centralizados (sin campo `city` hardcodeado) |
 | `styles.css` | Estilos compartidos con nueva paleta y tipografías |
 
+## v3.14 — Página para el link de la bio de Instagram (Pro / Fundador)
+
+- Nueva plantilla `link.html` tipo "Linktree": foto, nombre, especialidad, insignia de fundador, bio corta, botón(es) de WhatsApp, botón al perfil completo en Doclick, cómo llegar y un bloque que promociona la guía Doclick. Una sola plantilla para todos: se llena sola desde `data.js` con `link.html?id=ID`.
+- Solo para planes `pro` y `fundador`. Un médico del plan `perfil` que use ese link es enviado directo a su `perfil.html`.
+- Los campos marcados `[Pendiente]` no se muestran.
+- Todos los links salen con `utm_source=instagram&utm_medium=bio` y se registran en GA4 (`view_link_bio`, `click_link_bio`).
+- **Links cortos** en `_redirects` (Cloudflare): `doclick.net/drguerra`, `/drvegas`, `/drdiover`. Para un médico nuevo, agregar una línea ahí.
+- Hosting: el sitio está en **Cloudflare** (Worker `docklic`, conectado a GitHub `main` — cada push se publica solo). Las menciones a Netlify en versiones anteriores de este README son históricas.
+
 ## v3.12 — 4 arreglos pre-lanzamiento
 
 1. **Contador de cupos fundadores incoherente**: los 3 perfiles ficticios marcados como fundadores (María González, Carlos Rodríguez, Ana Pérez) se sacaron de `DOCTORS` — ya no cuentan. Quedan archivados sin efecto en el sitio en una constante aparte, `EXAMPLE_PROFILES_ARCHIVE`, al final de `data.js` (comentada, no se importa desde ningún HTML). Contador real ahora: **2 de 5 ocupados, 3 disponibles** (Domingo y Williams).

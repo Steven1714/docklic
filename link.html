@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QHY2PM07NM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QHY2PM07NM', {send_page_view: false});
+</script>
+<title id="page-title">Doclick — Enlaces</title>
+<meta name="description" id="page-desc" content="Agenda tu cita por WhatsApp. Perfil verificado en Doclick.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230D4A3A'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia' font-weight='bold' font-size='55' fill='white'%3ED%3C/text%3E%3C/svg%3E">
+<meta property="og:title" id="og-title" content="Doclick — Enlaces">
+<meta property="og:description" id="og-desc" content="Agenda tu cita por WhatsApp. Perfil verificado en Doclick.">
+<meta property="og:image" content="https://doclick.net/images/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Landing tipo "link en la bio" de Instagram — solo para planes Pro y Fundador */
+  body { background: linear-gradient(180deg, var(--forest-light) 0%, var(--bg) 320px); }
+  .lb { max-width: 460px; margin: 0 auto; padding: 28px 16px 40px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .lb-brand { display: inline-flex; align-items: center; gap: 8px; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 15px; color: var(--forest); margin-bottom: 28px; }
+  .lb-brand .logo-mark { width: 26px; height: 26px; font-size: 12px; }
+  .lb-photo { width: 116px; height: 116px; border-radius: 50%; overflow: hidden; border: 4px solid var(--surface); box-shadow: var(--shadow-lg); background: linear-gradient(135deg, #1A6B56, var(--forest)); color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 38px; margin-bottom: 16px; }
+  .lb-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .lb h1 { font-size: 26px; margin-bottom: 6px; }
+  .lb-specialty { color: var(--forest); font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+  .lb-reg { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--muted); margin-bottom: 12px; }
+  .lb-bio { color: var(--ink-light); font-size: 14.5px; line-height: 1.55; margin: 6px 0 24px; }
+  .lb-links { width: 100%; display: flex; flex-direction: column; gap: 12px; }
+  .lb-links .btn { width: 100%; padding: 16px 20px; font-size: 15px; border-radius: var(--radius-sm); }
+  .btn-wa { background: #1FA855; color: #fff; }
+  .btn-wa:hover { background: #178A45; box-shadow: 0 6px 20px -4px rgba(31,168,85,0.45); }
+  .lb-schedule { font-size: 12.5px; color: var(--muted); margin-top: -2px; }
+  .lb-promo { width: 100%; margin-top: 32px; padding: 22px 20px; border-radius: var(--radius); background: var(--forest); color: #fff; text-align: left; }
+  .lb-promo h2 { color: #fff; font-size: 19px; margin-bottom: 6px; }
+  .lb-promo p { color: rgba(255,255,255,0.8); font-size: 13.5px; line-height: 1.5; margin-bottom: 16px; }
+  .lb-promo .btn { width: 100%; }
+  .lb-foot { margin-top: 28px; font-size: 12px; color: var(--muted); }
+  .lb-foot a { color: var(--forest); font-weight: 600; }
+  .lb-verified { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--forest); font-weight: 600; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+
+<main class="lb" id="lb-main">
+  <p style="padding:80px 0;color:var(--muted);">Cargando...</p>
+</main>
+
+<script src="data.js"></script>
+<script>
+// Uso: link.html?id=7  (o la URL corta definida en _redirects, ej. doclick.net/drvegas)
+const UTM='utm_source=instagram&utm_medium=bio&utm_campaign=landing_medico';
+function trackLink(doctorId,type){gtag('event','click_link_bio',{doctor_id:doctorId,link_type:type});}
+function isPending(text){return !text||text.includes('[Pendiente');}
+
+const doctor=getDoctorById(new URLSearchParams(window.location.search).get('id'));
+const main=document.getElementById('lb-main');
+
+if(!doctor){
+  gtag('event','page_view');
+  main.innerHTML=`<a href="index.html" class="lb-brand"><div class="logo-mark">D</div>Doclick</a><h1>Enlace no encontrado</h1><p class="lb-bio">Este enlace no existe o ha sido removido.</p><a class="btn btn-primary" href="index.html?${UTM}">Buscar médicos en Doclick</a>`;
+} else if(!hasFeaturedPlan(doctor)){
+  // La landing de Instagram es parte de Pro/Fundador; el plan Perfil va directo a su perfil.
+  window.location.replace(`perfil.html?id=${doctor.id}&${UTM}`);
+} else {
+  const fullName=`${doctor.title} ${doctor.name}`;
+  const pageTitle=`${fullName} — ${doctor.specialty} | Doclick`;
+  document.title=pageTitle;
+  document.getElementById('og-title').content=pageTitle;
+  if(!isPending(doctor.shortBio)){document.getElementById('page-desc').content=doctor.shortBio;document.getElementById('og-desc').content=doctor.shortBio;}
+  gtag('event','page_view',{page_title:pageTitle});
+  gtag('event','view_link_bio',{doctor_id:doctor.id,plan:doctor.plan});
+
+  const waIcon=`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>`;
+  const numbers=doctor.whatsappNumbers||[doctor.whatsappNumber];
+  const waHtml=numbers.map((num,i,arr)=>`
+    <a class="btn btn-wa" href="${buildWaLink(num,'Hola, vi tu Instagram y quiero agendar una cita.')}" target="_blank" rel="noopener" onclick="trackLink(${doctor.id},'whatsapp')">${waIcon}Agendar cita por WhatsApp${arr.length>1?` (línea ${i+1})`:''}</a>`).join('');
+
+  const profileLabel=doctor.heroVideo&&doctor.heroVideo.youtubeId?'Ver mi perfil y video en Doclick':'Ver mi perfil en Doclick';
+  const profileHtml=`<a class="btn btn-primary" href="perfil.html?id=${doctor.id}&${UTM}" onclick="trackLink(${doctor.id},'perfil')"><div class="logo-mark" style="width:20px;height:20px;font-size:10px;background:#fff;color:var(--forest);">D</div>${profileLabel}</a>`;
+
+  const hasAddress=!isPending(doctor.address);
+  const mapsHtml=hasAddress?`<a class="btn btn-ghost" href="${doctor.mapUrl||buildMapsLink(doctor.mapQuery||doctor.address)}" target="_blank" rel="noopener" onclick="trackLink(${doctor.id},'maps')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Cómo llegar al consultorio</a>${!isPending(doctor.schedule)?`<p class="lb-schedule">${doctor.schedule}</p>`:''}`:'';
+
+  const regParts=[doctor.mpps?`MPPS ${doctor.mpps}`:'',doctor.cmm?`CMM ${doctor.cmm}`:''].filter(Boolean);
+  const foundingBadge=doctor.plan==='fundador'?`<div class="badge-founding" style="margin-bottom:14px;">Médico fundador · Doclick</div>`:'';
+
+  main.innerHTML=`
+    <a href="index.html?${UTM}" class="lb-brand" onclick="trackLink(${doctor.id},'logo')"><div class="logo-mark">D</div>Doclick</a>
+    <div class="lb-photo">${doctor.photoUrl?`<img src="${doctor.photoUrl}" alt="Foto de ${fullName}">`:doctor.initials}</div>
+    ${foundingBadge}
+    <h1>${fullName}</h1>
+    <p class="lb-specialty">${doctor.specialty}</p>
+    ${regParts.length?`<p class="lb-reg">${regParts.join(' · ')}</p>`:''}
+    <span class="lb-verified"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Perfil verificado por Doclick</span>
+    ${!isPending(doctor.shortBio)?`<p class="lb-bio">${doctor.shortBio}</p>`:'<div style="height:16px"></div>'}
+    <nav class="lb-links" aria-label="Enlaces de ${fullName}">
+      ${waHtml}
+      ${profileHtml}
+      ${mapsHtml}
+    </nav>
+    <section class="lb-promo" aria-label="Descubre Doclick">
+      <h2>¿Buscas otro especialista?</h2>
+      <p>En Doclick encuentras médicos verificados, con video, y les escribes directo por WhatsApp.</p>
+      <a class="btn btn-copper" href="index.html?${UTM}#directorio" onclick="trackLink(${doctor.id},'directorio')">Explorar la guía Doclick</a>
+    </section>
+    <p class="lb-foot">¿Eres médico? <a href="${buildWaLink(DOCLICK.contactWhatsapp,DOCLICK.contactMessage)}" target="_blank" rel="noopener" onclick="trackLink(${doctor.id},'recruitment')">Ten tu página como esta</a></p>`;
+}
+</script>
+
+</body>
+</html>
