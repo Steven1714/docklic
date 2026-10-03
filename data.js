@@ -66,15 +66,15 @@ const DOCTORS = [
     planHasta: "",
     mpps: "31456",
     cmm: "1714",
-    hasVideo: false, // TODO: pasar a true y llenar heroVideo cuando tengamos el ID del video (canal Edúcame)
-    whatsappNumber: "58XXXXXXXXXX", // TODO: número real del Dr. González
+    hasVideo: true,
+    whatsappNumber: "584148570327",
     instagramHandle: "diover.gonzalez",
     shortBio: "Neurocirujano en Maturín.",
     longBio: "",
     specialties: ["Neurocirugía"],
     address: "Isamica, Maturín",
     schedule: "",
-    heroVideo: null,
+    heroVideo: { title: "Conoce al Dr. Dióver González", duration: "1:38", youtubeId: "N9Sx3-YjhIY" },
     pastVideos: []
   }
 ];
