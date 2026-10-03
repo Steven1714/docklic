@@ -52,7 +52,7 @@ const DOCTORS = [
     address: "Centro de Consulta Externa Santa Sofía, Av. Luis del Valle García con calle 6, Sector Las Avenidas, Maturín",
     mapQuery: "PRVG+MGQ, Calle 6, Maturín 6201, Monagas",
     schedule: "Lun, miér, jue y vie: 7:30am–12:30pm · Mar: 11:00am–2:00pm · Tardes y sábados: con cita previa",
-    heroVideo: { title: "Conoce al Dr. Williams Vegas", duration: "1:28", youtubeId: "AKmDh6kZXDk" },
+    heroVideo: { title: "Conoce al Dr. Williams Vegas", duration: "0:50", youtubeId: "AKmDh6kZXDk" },
     pastVideos: []
   },
   {
