@@ -80,7 +80,23 @@ if(!doctor){
   document.getElementById('tw-title').content=pageTitle;
   document.getElementById('tw-desc').content=doctor.shortBio;
 
-  const schema={"@context":"https://schema.org","@type":"Physician","name":fullName,"medicalSpecialty":doctor.specialty,"telephone":`+${doctor.whatsappNumber}`,"url":window.location.href,"description":doctor.shortBio};
+  const isReal=t=>t&&!String(t).includes('[Pendiente');
+  const profileUrl=`${DOCLICK.domain}/perfil.html?id=${doctor.id}`;
+  const schema={"@context":"https://schema.org","@type":"Physician","name":fullName,"medicalSpecialty":doctor.specialty,"telephone":`+${doctor.whatsappNumber}`,"url":profileUrl};
+  if(isReal(doctor.shortBio))schema.description=doctor.shortBio;
+  if(doctor.photoUrl)schema.image=`${DOCLICK.domain}/${doctor.photoUrl}`;
+  if(isReal(doctor.address))schema.address={"@type":"PostalAddress","streetAddress":doctor.address,"addressLocality":"Maturín","addressRegion":"Monagas","addressCountry":"VE"};
+  if(doctor.instagramHandle)schema.sameAs=[`https://instagram.com/${doctor.instagramHandle}`];
+  // Video de YouTube como VideoObject, para que Google pueda mostrarlo en los resultados
+  const hv=doctor.heroVideo;
+  if(hv&&hv.youtubeId){
+    const [m,sec]=(hv.duration||'').split(':').map(Number);
+    const video={"@type":"VideoObject","name":hv.title,"description":isReal(doctor.shortBio)?doctor.shortBio:hv.title,
+      "thumbnailUrl":`https://i.ytimg.com/vi/${hv.youtubeId}/hqdefault.jpg`,"embedUrl":`https://www.youtube.com/embed/${hv.youtubeId}`,"contentUrl":`https://www.youtube.com/watch?v=${hv.youtubeId}`};
+    if(hv.uploadDate)video.uploadDate=hv.uploadDate;
+    if(!isNaN(m)&&!isNaN(sec))video.duration=`PT${m}M${sec}S`;
+    schema.subjectOf=video;
+  }
   document.getElementById('schema-json').textContent=JSON.stringify(schema);
 
   const foundingBadge=doctor.plan==='fundador'?`<div class="badge-founding" style="margin-bottom:14px;">${doctor.title==='Dra.'?'Médica fundadora':'Médico fundador'} · Doclick</div>`:'';

@@ -53,7 +53,7 @@ const DOCTORS = [
     address: "Centro de Consulta Externa Santa Sofía, Av. Luis del Valle García con calle 6, Sector Las Avenidas, Maturín",
     mapQuery: "PRVG+MGQ, Calle 6, Maturín 6201, Monagas",
     schedule: "Lun, miér, jue y vie: 7:30am–12:30pm · Mar: 11:00am–2:00pm · Tardes y sábados: con cita previa",
-    heroVideo: { title: "Conoce al Dr. Williams Vegas", duration: "0:50", youtubeId: "AKmDh6kZXDk" },
+    heroVideo: { title: "Conoce al Dr. Williams Vegas", duration: "0:50", youtubeId: "AKmDh6kZXDk", uploadDate: "2026-09-08" },
     landing: {
       theme: { deep: "#0B2F2A", accent: "#D9A55B", paper: "#F2F4F1", ink: "#13201D", soft: "#5E6E69" },
       coverUrl: "images/cover-dr-williams-vegas.jpg",
@@ -82,7 +82,7 @@ const DOCTORS = [
     address: "ISAMICA, Edificio de Consulta Externa, Consultorio 1, Planta Baja",
     mapUrl: "https://maps.app.goo.gl/zUBjhBA6wU7VqdEr8",
     schedule: "Lunes a viernes: 12:00pm–3:00pm",
-    heroVideo: { title: "Conoce al Dr. Dióver González", duration: "1:38", youtubeId: "N9Sx3-YjhIY" },
+    heroVideo: { title: "Conoce al Dr. Dióver González", duration: "1:38", youtubeId: "N9Sx3-YjhIY", uploadDate: "2026-10-03" },
     landing: {
       theme: { deep: "#123226", accent: "#8B6F4E", paper: "#F3EEE3", ink: "#2B2B2B", soft: "#2F4A3A" },
       coverUrl: "images/cover-dr-diover-gonzalez.jpg",
