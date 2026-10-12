@@ -794,6 +794,8 @@ footer .wrap {
   gap: 16px;
 }
 .footer-brand { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--ink); }
+.logo-img { height: 30px; width: auto; display: block; }
+.footer-logo { height: 18px; width: auto; display: block; }
 
 /* ============================================
    PERFIL INDIVIDUAL

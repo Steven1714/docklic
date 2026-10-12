@@ -18,6 +18,12 @@
 | `data.js` | Datos centralizados (sin campo `city` hardcodeado) |
 | `styles.css` | Estilos compartidos con nueva paleta y tipografías |
 
+## v3.18 — Logo oficial en todo el sitio
+
+- Se reemplazó la "D" provisional por el **logo oficial** (cursor + pulso + "Doclick"), tomado de la carpeta "doclick logos" del escritorio: menú y pie de `index.html` y `perfil.html` (versión verde, `images/logo-doclick.png`), píldora de las landings `link.html` y `esteban.html` (versión blanca, `images/logo-doclick-blanco.png`).
+- Ícono de la pestaña: `images/favicon.png` + `apple-touch-icon.png` (logo con fondo verde).
+- **`images/og-image.png` no existía**: las vistas previas al compartir doclick.net por WhatsApp salían sin imagen. Ahora es el logo sobre el degradado verde (1200×630).
+
 ## v3.17 — Landing del fundador + datos estructurados de video
 
 - **`esteban.html`** (doclick.net/esteban): landing personal del fundador para la bio de Instagram, con el mismo estilo de vidrio que las de los médicos y los colores de la marca personal (verde #0F1F1C, verde azulado #41A893, crema #F2EEE3, monograma EG). Foto: recorte de la pieza de destacadas "Granada 01" (Drive → Marca Esteban). Botón principal a su WhatsApp, proyectos (Doclick, Granada, Instagram) y bloque "¿Eres médico?" que lleva al WhatsApp de captación. Eventos GA4: `click_founder_link` con `link_type`.
