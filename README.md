@@ -18,6 +18,10 @@
 | `data.js` | Datos centralizados (sin campo `city` hardcodeado) |
 | `styles.css` | Estilos compartidos con nueva paleta y tipografías |
 
+## v3.19 — Oferta: 2 meses gratis para todos los médicos
+
+- La tarjeta de precios "Médico Fundador" ahora es **"2 meses gratis"**: Doclick Pro completo, sin costo, para todos los médicos nuevos. Después $25/mes o pasan a Perfil. Los primeros 5 siguen quedando como Médico Fundador (el contador muestra los cupos de fundador que quedan). Se actualizaron el FAQ, el bloque final y el mensaje de WhatsApp del botón.
+
 ## v3.18 — Logo oficial en todo el sitio
 
 - Se reemplazó la "D" provisional por el **logo oficial** (cursor + pulso + "Doclick"), tomado de la carpeta "doclick logos" del escritorio: menú y pie de `index.html` y `perfil.html` (versión verde, `images/logo-doclick.png`), píldora de las landings `link.html` y `esteban.html` (versión blanca, `images/logo-doclick-blanco.png`).
