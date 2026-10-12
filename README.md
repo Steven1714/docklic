@@ -18,6 +18,13 @@
 | `data.js` | Datos centralizados (sin campo `city` hardcodeado) |
 | `styles.css` | Estilos compartidos con nueva paleta y tipografías |
 
+## v3.17 — Landing del fundador + datos estructurados de video
+
+- **`esteban.html`** (doclick.net/esteban): landing personal del fundador para la bio de Instagram, con el mismo estilo de vidrio que las de los médicos y los colores de la marca personal (verde #0F1F1C, verde azulado #41A893, crema #F2EEE3, monograma EG). Foto: recorte de la pieza de destacadas "Granada 01" (Drive → Marca Esteban). Botón principal a su WhatsApp, proyectos (Doclick, Granada, Instagram) y bloque "¿Eres médico?" que lleva al WhatsApp de captación. Eventos GA4: `click_founder_link` con `link_type`.
+- **`landing.css`**: los estilos de `link.html` se movieron a este archivo para compartirlos con `esteban.html`. Un cambio de diseño ahí afecta a las dos.
+- **Datos estructurados en `perfil.html`**: el `Physician` ahora incluye foto, dirección, Instagram y el video de YouTube como `VideoObject` (con fecha de subida y duración). Para videos nuevos, agregar `uploadDate` en `heroVideo`.
+- Guía para los médicos sobre su ficha de Google (Perfil de Empresa): en Claude Docs.
+
 ## v3.16 — Landings de Instagram personalizadas + copy del video
 
 - **`link.html` rediseñada**: portada vertical a todo lo ancho con la foto del médico, nombre en serif editorial (Fraunces + Manrope), botón grande de WhatsApp con el número visible, 3 datos destacados, "Sobre", video (se carga solo al tocar), consulta con horario en filas, Instagram/perfil completo, pie Doclick. Barra fija de WhatsApp al hacer scroll y botón de compartir.

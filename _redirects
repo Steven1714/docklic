@@ -1,5 +1,6 @@
 # URLs cortas para el link de la bio de Instagram (Cloudflare Pages)
 # Formato: /url-corta   /link.html?id=ID_DEL_MEDICO   301
+# esteban.html no necesita línea: Cloudflare ya la sirve en /esteban
 /drguerra   /link.html?id=6   301
 /drvegas    /link.html?id=7   301
 /drdiover   /link.html?id=8   301
