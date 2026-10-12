@@ -702,6 +702,8 @@ img { max-width: 100%; height: auto; display: block; }
 .pricing-note { text-align: center; color: var(--muted); font-size: 14px; margin-top: 32px; }
 
 .profile-reg { font-size: 12.5px; color: var(--muted); margin: -8px 0 16px; }
+.profile-verified { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--forest); font-weight: 600; margin: -8px 0 16px; }
+.profile-reg + .profile-verified { margin-top: -10px; }
 
 /* ---------- FAQ ---------- */
 .faq-section { padding: 64px 0; background: var(--surface); border-top: 1px solid var(--hairline); }
@@ -950,20 +952,6 @@ footer .wrap {
 .location-details a:hover { text-decoration: underline; }
 
 /* Verificado footer */
-.verified-footer {
-  text-align: center;
-  padding: 32px;
-  background: var(--surface);
-  border-top: 1px solid var(--hairline);
-  margin-top: 32px;
-}
-.verified-footer p {
-  font-size: 13px;
-  color: var(--muted);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
 
 /* ============================================
    RESPONSIVE
