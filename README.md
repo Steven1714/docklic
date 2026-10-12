@@ -26,6 +26,7 @@
 - **Dra. Florimar**: morado y verde azulado de su marca en Instagram, con su logo (recortado de la captura de su perfil — si hay un archivo original del logo, conviene reemplazar `images/logo-dra-florimar-pinto.png`).
 - **Dr. Vegas**: no hay paleta suya en Drive; se usó el verde petróleo del fondo de su foto de estudio + ámbar. Ajustable en `data.js`.
 - **Estilo vidrio líquido (iOS) — opción D2 elegida en mockup**: la foto queda detrás de todo el bloque superior; el botón de WhatsApp va pegado al nombre y debajo una cápsula de vidrio con los 3 datos (reemplaza la caja rígida de antes). Botón Doclick, compartir, etiqueta de fundador y línea 2 de WhatsApp también en vidrio. El morado de la Dra. Florimar ahora es el de su logo (#8D5BA3).
+- **Parte inferior estilo vidrio — opción E2 elegida en mockup**: el color de arriba baja y se aclara hasta el fondo; "Sobre", video, consulta y enlaces van en tarjetas de vidrio redondeadas (sin líneas grises ni tabla de horario).
 - **Copy**: el sitio decía que el médico graba su video con su celular. Ahora dice que Doclick va al consultorio y lo graba (paso 2 de "Cómo funciona" y 2 respuestas del FAQ en `index.html`).
 
 ## v3.15 — Dra. Florimar Pinto (Psiquiatría), 4ta fundadora
