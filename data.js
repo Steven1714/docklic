@@ -113,7 +113,7 @@ const DOCTORS = [
     schedule: "Presencial: mar, jue y vie, 9:00am–4:00pm · Telemedicina: lun, miér y sáb",
     heroVideo: { title: "Conoce a la Dra. Florimar Pinto", duration: "", youtubeId: null },
     landing: {
-      theme: { deep: "#3B2150", accent: "#3BA08E", paper: "#F6F2F8", ink: "#251B2E", soft: "#6B5A78" },
+      theme: { deep: "#8D5BA3", accent: "#3BA08E", paper: "#F7F2FA", ink: "#2E1F38", soft: "#6E5A7C" },
       coverUrl: "images/cover-dra-florimar-pinto.jpg",
       logoUrl: "images/logo-dra-florimar-pinto.png",
       facts: [["18 años", "como especialista"], ["ULA", "médico psiquiatra"], ["Online", "lun, miér y sáb"]]

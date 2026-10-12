@@ -44,30 +44,31 @@
   }
 
   /* Portada */
-  .cover { position: relative; aspect-ratio: 4 / 5; max-height: 640px; width: 100%; background: var(--deep); color: #fff; overflow: hidden; }
-  .cover > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+  .cover { position: relative; width: 100%; padding-top: 70%; background: var(--deep); color: #fff; overflow: hidden; }
+  .cover > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 0%; }
   .cover::after { content: ""; position: absolute; inset: 0; background:
-      linear-gradient(180deg, rgba(0,0,0,.35) 0%, transparent 22%, transparent 42%, color-mix(in srgb, var(--deep) 55%, transparent) 58%, color-mix(in srgb, var(--deep) 92%, transparent) 80%, var(--deep) 100%); }
-  .cover--compact { aspect-ratio: auto; padding-top: 84px; }
+      linear-gradient(180deg, rgba(0,0,0,.32) 0%, transparent 15%, transparent 30%, color-mix(in srgb, var(--deep) 50%, transparent) 44%, color-mix(in srgb, var(--deep) 84%, transparent) 62%, color-mix(in srgb, var(--deep) 93%, transparent) 100%); }
+  .cover--compact { padding-top: 84px; }
   .cover--compact::after { display: none; }
-  .cover--compact .cover-meta { position: relative; }
+  /* Vidrio líquido (estilo iOS): translúcido, desenfoca lo que hay detrás, con brillo fino en el borde */
+  .glass { background: rgba(255,255,255,.14); backdrop-filter: blur(16px) saturate(170%); -webkit-backdrop-filter: blur(16px) saturate(170%); border: 1px solid rgba(255,255,255,.32); box-shadow: inset 0 1px 0 rgba(255,255,255,.5), inset 0 -1px 0 rgba(255,255,255,.1), 0 8px 24px rgba(0,0,0,.16); }
   .cover-avatar { width: 112px; height: 112px; border-radius: 50%; overflow: hidden; margin-bottom: 18px; box-shadow: 0 0 0 3px var(--accent); background: rgba(255,255,255,.08); display: grid; place-items: center; font-family: var(--serif); font-size: 40px; }
   .cover-avatar img { width: 100%; height: 100%; object-fit: cover; }
   .topbar { position: absolute; z-index: 2; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: 16px; }
-  .pill { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px 0 6px; border-radius: 99px; background: rgba(0,0,0,.28); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.16); font-size: 13px; font-weight: 700; letter-spacing: .01em; color: #fff; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px 0 6px; border-radius: 99px; font-size: 13px; font-weight: 700; letter-spacing: .01em; color: #fff; }
   .pill .d { width: 24px; height: 24px; border-radius: 50%; background: #fff; color: #0D4A3A; display: grid; place-items: center; font-family: Georgia, serif; font-weight: 700; font-size: 13px; }
-  .icon-btn { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: rgba(0,0,0,.28); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.16); color: #fff; cursor: pointer; }
-  .cover-meta { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; padding: 0 24px 26px; }
+  .icon-btn { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; color: #fff; cursor: pointer; }
+  .cover-body { position: relative; z-index: 2; padding: 0 20px 26px; }
+  .cover-body > .who { padding: 0 4px; }
   .cover-logo { width: 54px; height: 54px; border-radius: 50%; margin-bottom: 14px; box-shadow: 0 0 0 3px rgba(255,255,255,.9); background: #fff; }
-  .badge { display: inline-flex; align-items: center; height: 24px; padding: 0 10px; border-radius: 6px; font-family: var(--mono); font-size: 10.5px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; background: var(--accent); color: var(--accent-ink); margin-bottom: 12px; }
+  .badge { display: inline-flex; align-items: center; height: 24px; padding: 0 10px; border-radius: 99px; font-family: var(--mono); font-size: 10.5px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: #fff; margin-bottom: 12px; }
   .cover h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(34px, 10vw, 44px); line-height: 1.02; letter-spacing: -0.02em; }
   .cover h1 small { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; opacity: .75; margin-bottom: 8px; font-weight: 400; }
   .cover .spec { margin-top: 10px; font-family: var(--serif); font-style: italic; font-size: 19px; color: color-mix(in srgb, #fff 82%, var(--accent)); }
   .cover .reg { margin-top: 8px; font-family: var(--mono); font-size: 11px; letter-spacing: .06em; opacity: .65; }
 
   /* Llamado principal */
-  .cta { background: var(--deep); padding: 4px 20px 28px; }
-  .btn-main { display: flex; align-items: center; gap: 14px; width: 100%; padding: 14px 16px 14px 14px; border-radius: 18px; background: var(--accent); color: var(--accent-ink); transition: transform .15s ease, filter .15s ease; }
+  .btn-main { margin-top: 22px; box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 10px 24px -10px rgba(0,0,0,.4); display: flex; align-items: center; gap: 14px; width: 100%; padding: 14px 16px 14px 14px; border-radius: 18px; background: var(--accent); color: var(--accent-ink); transition: transform .15s ease, filter .15s ease; }
   .btn-main:hover { filter: brightness(1.06); }
   .btn-main:active { transform: scale(.985); }
   .btn-main .ic { flex: none; width: 44px; height: 44px; border-radius: 13px; background: rgba(255,255,255,.22); display: grid; place-items: center; }
@@ -75,16 +76,16 @@
   .btn-main span { display: block; font-size: 12.5px; font-weight: 500; opacity: .8; margin-top: 1px; }
   .btn-main .arrow { margin-left: auto; opacity: .7; }
   .alt-lines { display: flex; gap: 8px; margin-top: 10px; }
-  .alt-lines a { flex: 1; text-align: center; font-size: 12.5px; font-weight: 700; color: #fff; padding: 10px; border-radius: 12px; border: 1px solid rgba(255,255,255,.18); }
+  .alt-lines a { flex: 1; text-align: center; font-size: 12.5px; font-weight: 700; color: #fff; padding: 11px; border-radius: 99px; }
   .verified { display: flex; align-items: center; justify-content: center; gap: 7px; margin-top: 16px; font-size: 12px; font-weight: 600; color: rgba(255,255,255,.72); }
   .verified svg { color: var(--accent); }
 
   /* Datos destacados */
-  .facts { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line); }
-  .fact { padding: 22px 12px 20px; text-align: center; }
-  .fact + .fact { border-left: 1px solid var(--line); }
-  .fact b { display: block; font-family: var(--serif); font-weight: 600; font-size: 21px; letter-spacing: -0.01em; color: var(--deep); line-height: 1.1; }
-  .fact span { display: block; font-size: 11.5px; color: var(--soft); margin-top: 5px; line-height: 1.35; }
+  .facts { display: flex; margin-top: 12px; padding: 11px 4px; border-radius: 22px; }
+  .fact { flex: 1; min-width: 0; text-align: center; padding: 0 6px; }
+  .fact + .fact { border-left: 1px solid rgba(255,255,255,.24); }
+  .fact b { display: block; font-family: var(--serif); font-weight: 400; font-size: 17px; letter-spacing: -0.01em; color: #fff; line-height: 1.15; }
+  .fact span { display: block; font-size: 10.5px; color: rgba(255,255,255,.78); margin-top: 3px; line-height: 1.3; }
 
   /* Bloques */
   .block { padding: 30px 24px; border-bottom: 1px solid var(--line); }
@@ -213,32 +214,28 @@ if(!doctor){
     <header class="cover${coverUrl?'':' cover--compact'}">
       ${coverUrl?`<img src="${coverUrl}" alt="${esc(fullName)}" fetchpriority="high">`:''}
       <div class="topbar">
-        <a class="pill" href="index.html?${UTM}" onclick="trackLink(${doctor.id},'logo')" aria-label="Ir a Doclick"><span class="d">D</span>Doclick</a>
-        <button class="icon-btn" id="share" type="button" aria-label="Compartir esta página">${ICON.share}</button>
+        <a class="pill glass" href="index.html?${UTM}" onclick="trackLink(${doctor.id},'logo')" aria-label="Ir a Doclick"><span class="d">D</span>Doclick</a>
+        <button class="icon-btn glass" id="share" type="button" aria-label="Compartir esta página">${ICON.share}</button>
       </div>
-      <div class="cover-meta">
-        ${coverUrl?'':`<div class="cover-avatar">${doctor.photoUrl?`<img src="${doctor.photoUrl}" alt="${esc(fullName)}">`:doctor.initials}</div>`}
-        ${L.logoUrl?`<img class="cover-logo" src="${L.logoUrl}" alt="Logo de ${esc(fullName)}">`:''}
-        <div class="badge">${founder}</div>
-        <h1><small>${doctor.title}</small>${esc(doctor.name)}</h1>
-        <p class="spec">${esc(doctor.specialty)}</p>
-        ${regParts.length?`<p class="reg">${regParts.join(' · ')}</p>`:''}
-      </div>
-    </header>`;
-
-  // Llamado principal
-  const ctaHtml=`
-    <section class="cta" aria-label="Agendar cita">
+      <div class="cover-body">
+        <div class="who">
+          ${coverUrl?'':`<div class="cover-avatar">${doctor.photoUrl?`<img src="${doctor.photoUrl}" alt="${esc(fullName)}">`:doctor.initials}</div>`}
+          ${L.logoUrl?`<img class="cover-logo" src="${L.logoUrl}" alt="Logo de ${esc(fullName)}">`:''}
+          <div class="badge glass">${founder}</div>
+          <h1><small>${doctor.title}</small>${esc(doctor.name)}</h1>
+          <p class="spec">${esc(doctor.specialty)}</p>
+          ${regParts.length?`<p class="reg">${regParts.join(' · ')}</p>`:''}
+        </div>
       <a class="btn-main" id="main-cta" href="${waMain}" target="_blank" rel="noopener" onclick="trackLink(${doctor.id},'whatsapp')">
         <span class="ic">${ICON.wa}</span>
         <span><strong>Agenda tu cita</strong><span>WhatsApp · ${formatVePhone(numbers[0])}</span></span>
         <span class="arrow">${ICON.arrow}</span>
       </a>
-      ${numbers.length>1?`<div class="alt-lines">${numbers.slice(1).map((num,i)=>`<a href="${buildWaLink(num,waMsg)}" target="_blank" rel="noopener" onclick="trackLink(${doctor.id},'whatsapp')">Línea ${i+2} · ${formatVePhone(num)}</a>`).join('')}</div>`:''}
+      ${numbers.length>1?`<div class="alt-lines">${numbers.slice(1).map((num,i)=>`<a class="glass" href="${buildWaLink(num,waMsg)}" target="_blank" rel="noopener" onclick="trackLink(${doctor.id},'whatsapp')">Línea ${i+2} · ${formatVePhone(num)}</a>`).join('')}</div>`:''}
+      ${(L.facts||[]).length?`<div class="facts glass" role="list" aria-label="Datos destacados">${L.facts.slice(0,3).map(([b,s])=>`<div class="fact" role="listitem"><b>${esc(b)}</b><span>${esc(s)}</span></div>`).join('')}</div>`:''}
       <p class="verified">${ICON.check}Perfil verificado por Doclick</p>
-    </section>`;
-
-  const factsHtml=(L.facts||[]).length?`<section class="facts" aria-label="Datos destacados">${L.facts.slice(0,3).map(([b,s])=>`<div class="fact"><b>${esc(b)}</b><span>${esc(s)}</span></div>`).join('')}</section>`:'';
+      </div>
+    </header>`;
 
   const aboutHtml=!isPending(doctor.shortBio)?`
     <section class="block" aria-label="Sobre ${esc(fullName)}">
@@ -281,7 +278,7 @@ if(!doctor){
       <div class="sign"><span>Página creada por Doclick</span><a href="${buildWaLink(DOCLICK.contactWhatsapp,DOCLICK.contactMessage)}" target="_blank" rel="noopener" onclick="trackLink(${doctor.id},'recruitment')">¿Eres médico?</a></div>
     </footer>`;
 
-  lp.innerHTML=coverHtml+ctaHtml+factsHtml+aboutHtml+videoHtml+placeHtml+linksHtml+footHtml;
+  lp.innerHTML=coverHtml+aboutHtml+videoHtml+placeHtml+linksHtml+footHtml;
 
   // Video: carga el reproductor solo al tocar
   const vb=document.getElementById('video');

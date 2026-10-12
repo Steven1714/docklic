@@ -25,6 +25,7 @@
 - **Dr. Dióver**: paleta oficial de Drive (#123226, #2F4A3A, #8B6F4E, #E9DEC8, #2B2B2B), portada y **foto de perfil nueva** de IMG_0340 (de cerca, brazos cruzados, sin retoques — las del pasillo vienen muy procesadas por el celular) — antes no tenía `photoUrl`.
 - **Dra. Florimar**: morado y verde azulado de su marca en Instagram, con su logo (recortado de la captura de su perfil — si hay un archivo original del logo, conviene reemplazar `images/logo-dra-florimar-pinto.png`).
 - **Dr. Vegas**: no hay paleta suya en Drive; se usó el verde petróleo del fondo de su foto de estudio + ámbar. Ajustable en `data.js`.
+- **Estilo vidrio líquido (iOS) — opción D2 elegida en mockup**: la foto queda detrás de todo el bloque superior; el botón de WhatsApp va pegado al nombre y debajo una cápsula de vidrio con los 3 datos (reemplaza la caja rígida de antes). Botón Doclick, compartir, etiqueta de fundador y línea 2 de WhatsApp también en vidrio. El morado de la Dra. Florimar ahora es el de su logo (#8D5BA3).
 - **Copy**: el sitio decía que el médico graba su video con su celular. Ahora dice que Doclick va al consultorio y lo graba (paso 2 de "Cómo funciona" y 2 respuestas del FAQ en `index.html`).
 
 ## v3.15 — Dra. Florimar Pinto (Psiquiatría), 4ta fundadora
