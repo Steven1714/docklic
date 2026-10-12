@@ -18,6 +18,15 @@
 | `data.js` | Datos centralizados (sin campo `city` hardcodeado) |
 | `styles.css` | Estilos compartidos con nueva paleta y tipografías |
 
+## v3.16 — Landings de Instagram personalizadas + copy del video
+
+- **`link.html` rediseñada**: portada vertical a todo lo ancho con la foto del médico, nombre en serif editorial (Fraunces + Manrope), botón grande de WhatsApp con el número visible, 3 datos destacados, "Sobre", video (se carga solo al tocar), consulta con horario en filas, Instagram/perfil completo, pie Doclick. Barra fija de WhatsApp al hacer scroll y botón de compartir.
+- **Una sola plantilla, personalizada desde `data.js`** con el campo opcional `landing`: `theme` (colores `deep`, `accent`, `paper`, `ink`, `soft`), `coverUrl` (foto vertical 4:5, 900×1125), `logoUrl` y `facts` (máx. 3, solo datos confirmados). El color del texto sobre el acento se calcula solo. Sin `landing` (ej. Dr. Guerra) se ve con colores Doclick y encabezado compacto con la foto en círculo.
+- **Dr. Dióver**: paleta oficial de Drive (#123226, #2F4A3A, #8B6F4E, #E9DEC8, #2B2B2B), portada del pasillo (IMG_0344) y **foto de perfil nueva** (IMG_0338) — antes no tenía `photoUrl`.
+- **Dra. Florimar**: morado y verde azulado de su marca en Instagram, con su logo (recortado de la captura de su perfil — si hay un archivo original del logo, conviene reemplazar `images/logo-dra-florimar-pinto.png`).
+- **Dr. Vegas**: no hay paleta suya en Drive; se usó el verde petróleo del fondo de su foto de estudio + ámbar. Ajustable en `data.js`.
+- **Copy**: el sitio decía que el médico graba su video con su celular. Ahora dice que Doclick va al consultorio y lo graba (paso 2 de "Cómo funciona" y 2 respuestas del FAQ en `index.html`).
+
 ## v3.15 — Dra. Florimar Pinto (Psiquiatría), 4ta fundadora
 
 - Nuevo perfil (`data.js`, id 9): foto de su sesión en Drive (carpeta "Doclick video fundadores → Florimar", `IMG_0229`, recortada a `images/dra-florimar-pinto.jpg`), MPPS 69118, CMM 6329, WhatsApp 0424-958.72.96 (sacado de su `wa.link` de Instagram), Instagram `@floripsiquiatra`. Bio tomada de su bio de Instagram, sin agregar nada.

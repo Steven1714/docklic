@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QHY2PM07NM"></script>
 <script>
@@ -14,45 +14,140 @@
 <title id="page-title">Doclick — Enlaces</title>
 <meta name="description" id="page-desc" content="Agenda tu cita por WhatsApp. Perfil verificado en Doclick.">
 <meta name="robots" content="noindex">
+<meta name="theme-color" id="theme-color" content="#0D4A3A">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230D4A3A'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia' font-weight='bold' font-size='55' fill='white'%3ED%3C/text%3E%3C/svg%3E">
 <meta property="og:title" id="og-title" content="Doclick — Enlaces">
 <meta property="og:description" id="og-desc" content="Agenda tu cita por WhatsApp. Perfil verificado en Doclick.">
-<meta property="og:image" content="https://doclick.net/images/og-image.png">
+<meta property="og:image" id="og-image" content="https://doclick.net/images/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  /* Landing tipo "link en la bio" de Instagram — solo para planes Pro y Fundador */
-  body { background: linear-gradient(180deg, var(--forest-light) 0%, var(--bg) 320px); }
-  .lb { max-width: 460px; margin: 0 auto; padding: 28px 16px 40px; display: flex; flex-direction: column; align-items: center; text-align: center; }
-  .lb-brand { display: inline-flex; align-items: center; gap: 8px; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 15px; color: var(--forest); margin-bottom: 28px; }
-  .lb-brand .logo-mark { width: 26px; height: 26px; font-size: 12px; }
-  .lb-photo { width: 116px; height: 116px; border-radius: 50%; overflow: hidden; border: 4px solid var(--surface); box-shadow: var(--shadow-lg); background: linear-gradient(135deg, #1A6B56, var(--forest)); color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 38px; margin-bottom: 16px; }
-  .lb-photo img { width: 100%; height: 100%; object-fit: cover; }
-  .lb h1 { font-size: 26px; margin-bottom: 6px; }
-  .lb-specialty { color: var(--forest); font-weight: 600; font-size: 15px; margin-bottom: 4px; }
-  .lb-reg { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: var(--muted); margin-bottom: 12px; }
-  .lb-bio { color: var(--ink-light); font-size: 14.5px; line-height: 1.55; margin: 6px 0 24px; }
-  .lb-links { width: 100%; display: flex; flex-direction: column; gap: 12px; }
-  .lb-links .btn { width: 100%; padding: 16px 20px; font-size: 15px; border-radius: var(--radius-sm); }
-  .btn-wa { background: #1FA855; color: #fff; }
-  .btn-wa:hover { background: #178A45; box-shadow: 0 6px 20px -4px rgba(31,168,85,0.45); }
-  .lb-schedule { font-size: 12.5px; color: var(--muted); margin-top: -2px; }
-  .lb-promo { width: 100%; margin-top: 32px; padding: 22px 20px; border-radius: var(--radius); background: var(--forest); color: #fff; text-align: left; }
-  .lb-promo h2 { color: #fff; font-size: 19px; margin-bottom: 6px; }
-  .lb-promo p { color: rgba(255,255,255,0.8); font-size: 13.5px; line-height: 1.5; margin-bottom: 16px; }
-  .lb-promo .btn { width: 100%; }
-  .lb-foot { margin-top: 28px; font-size: 12px; color: var(--muted); }
-  .lb-foot a { color: var(--forest); font-weight: 600; }
-  .lb-verified { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--forest); font-weight: 600; margin-bottom: 8px; }
+  /* Landing "link en la bio" de Instagram — una sola plantilla, personalizada por médico desde data.js (campo landing) */
+  :root {
+    --deep: #0D4A3A; --accent: #C4956A; --accent-ink: #1B1B1B; --paper: #F7F5F2; --ink: #1A1A1A; --soft: #5C6B66;
+    --line: color-mix(in srgb, var(--ink) 12%, transparent);
+    --card: color-mix(in srgb, #fff 70%, var(--paper));
+    --serif: 'Fraunces', Georgia, serif; --sans: 'Manrope', system-ui, sans-serif; --mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { font-family: var(--sans); color: var(--ink); background: var(--deep); min-height: 100vh; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  .stage { min-height: 100vh; display: flex; justify-content: center; }
+  .lp { width: 100%; max-width: 460px; background: var(--paper); position: relative; overflow: hidden; }
+  @media (min-width: 560px) {
+    .stage { padding: 40px 16px 64px; background:
+      radial-gradient(120% 60% at 50% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%), var(--deep); }
+    .lp { border-radius: 28px; box-shadow: 0 40px 80px -30px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.06); }
+  }
+
+  /* Portada */
+  .cover { position: relative; aspect-ratio: 4 / 5; max-height: 640px; width: 100%; background: var(--deep); color: #fff; overflow: hidden; }
+  .cover > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+  .cover::after { content: ""; position: absolute; inset: 0; background:
+      linear-gradient(180deg, rgba(0,0,0,.35) 0%, transparent 22%, transparent 42%, color-mix(in srgb, var(--deep) 55%, transparent) 58%, color-mix(in srgb, var(--deep) 92%, transparent) 80%, var(--deep) 100%); }
+  .cover--compact { aspect-ratio: auto; padding-top: 84px; }
+  .cover--compact::after { display: none; }
+  .cover--compact .cover-meta { position: relative; }
+  .cover-avatar { width: 112px; height: 112px; border-radius: 50%; overflow: hidden; margin-bottom: 18px; box-shadow: 0 0 0 3px var(--accent); background: rgba(255,255,255,.08); display: grid; place-items: center; font-family: var(--serif); font-size: 40px; }
+  .cover-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .topbar { position: absolute; z-index: 2; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: 16px; }
+  .pill { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px 0 6px; border-radius: 99px; background: rgba(0,0,0,.28); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.16); font-size: 13px; font-weight: 700; letter-spacing: .01em; color: #fff; }
+  .pill .d { width: 24px; height: 24px; border-radius: 50%; background: #fff; color: #0D4A3A; display: grid; place-items: center; font-family: Georgia, serif; font-weight: 700; font-size: 13px; }
+  .icon-btn { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: rgba(0,0,0,.28); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.16); color: #fff; cursor: pointer; }
+  .cover-meta { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; padding: 0 24px 26px; }
+  .cover-logo { width: 54px; height: 54px; border-radius: 50%; margin-bottom: 14px; box-shadow: 0 0 0 3px rgba(255,255,255,.9); background: #fff; }
+  .badge { display: inline-flex; align-items: center; height: 24px; padding: 0 10px; border-radius: 6px; font-family: var(--mono); font-size: 10.5px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; background: var(--accent); color: var(--accent-ink); margin-bottom: 12px; }
+  .cover h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(34px, 10vw, 44px); line-height: 1.02; letter-spacing: -0.02em; }
+  .cover h1 small { display: block; font-family: var(--mono); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; opacity: .75; margin-bottom: 8px; font-weight: 400; }
+  .cover .spec { margin-top: 10px; font-family: var(--serif); font-style: italic; font-size: 19px; color: color-mix(in srgb, #fff 82%, var(--accent)); }
+  .cover .reg { margin-top: 8px; font-family: var(--mono); font-size: 11px; letter-spacing: .06em; opacity: .65; }
+
+  /* Llamado principal */
+  .cta { background: var(--deep); padding: 4px 20px 28px; }
+  .btn-main { display: flex; align-items: center; gap: 14px; width: 100%; padding: 14px 16px 14px 14px; border-radius: 18px; background: var(--accent); color: var(--accent-ink); transition: transform .15s ease, filter .15s ease; }
+  .btn-main:hover { filter: brightness(1.06); }
+  .btn-main:active { transform: scale(.985); }
+  .btn-main .ic { flex: none; width: 44px; height: 44px; border-radius: 13px; background: rgba(255,255,255,.22); display: grid; place-items: center; }
+  .btn-main strong { display: block; font-size: 16.5px; font-weight: 800; letter-spacing: -0.01em; }
+  .btn-main span { display: block; font-size: 12.5px; font-weight: 500; opacity: .8; margin-top: 1px; }
+  .btn-main .arrow { margin-left: auto; opacity: .7; }
+  .alt-lines { display: flex; gap: 8px; margin-top: 10px; }
+  .alt-lines a { flex: 1; text-align: center; font-size: 12.5px; font-weight: 700; color: #fff; padding: 10px; border-radius: 12px; border: 1px solid rgba(255,255,255,.18); }
+  .verified { display: flex; align-items: center; justify-content: center; gap: 7px; margin-top: 16px; font-size: 12px; font-weight: 600; color: rgba(255,255,255,.72); }
+  .verified svg { color: var(--accent); }
+
+  /* Datos destacados */
+  .facts { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line); }
+  .fact { padding: 22px 12px 20px; text-align: center; }
+  .fact + .fact { border-left: 1px solid var(--line); }
+  .fact b { display: block; font-family: var(--serif); font-weight: 600; font-size: 21px; letter-spacing: -0.01em; color: var(--deep); line-height: 1.1; }
+  .fact span { display: block; font-size: 11.5px; color: var(--soft); margin-top: 5px; line-height: 1.35; }
+
+  /* Bloques */
+  .block { padding: 30px 24px; border-bottom: 1px solid var(--line); }
+  .eyebrow { display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px; font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--soft); }
+  .eyebrow i { font-style: normal; color: var(--accent); filter: saturate(1.1) brightness(.85); }
+  .lead { font-family: var(--serif); font-size: 21px; line-height: 1.38; letter-spacing: -0.01em; color: var(--ink); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .chips li { list-style: none; font-size: 12.5px; font-weight: 600; padding: 7px 12px; border-radius: 99px; background: var(--card); border: 1px solid var(--line); color: var(--ink); }
+
+  .video { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; border-radius: 16px; overflow: hidden; background: #000; cursor: pointer; border: 0; padding: 0; }
+  .video img { width: 100%; height: 100%; object-fit: cover; opacity: .85; transition: transform .4s ease; }
+  .video:hover img { transform: scale(1.03); }
+  .video .play { position: absolute; inset: 0; display: grid; place-items: center; }
+  .video .play span { width: 64px; height: 64px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+  .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .video-cap { display: flex; justify-content: space-between; margin-top: 10px; font-size: 13px; font-weight: 600; }
+  .video-cap span { font-family: var(--mono); font-weight: 400; color: var(--soft); }
+
+  .place { font-family: var(--serif); font-size: 19px; line-height: 1.35; }
+  .hours { margin-top: 18px; border-top: 1px solid var(--line); }
+  .hours div { display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 13.5px; }
+  .hours dt { font-weight: 700; flex: none; }
+  .hours dd { color: var(--soft); text-align: right; }
+  .btn-line { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 18px; padding: 14px; border-radius: 14px; border: 1.5px solid var(--ink); font-size: 14px; font-weight: 700; transition: background .15s ease, color .15s ease; }
+  .btn-line:hover { background: var(--ink); color: var(--paper); }
+
+  .rows a { display: flex; align-items: center; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .rows a:last-child { border-bottom: 0; }
+  .rows .ri { width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; background: var(--card); border: 1px solid var(--line); flex: none; }
+  .rows strong { display: block; font-size: 14.5px; font-weight: 700; }
+  .rows small { display: block; font-size: 12px; color: var(--soft); margin-top: 1px; }
+  .rows .go { margin-left: auto; color: var(--soft); transition: transform .15s ease; }
+  .rows a:hover .go { transform: translateX(3px); }
+
+  /* Pie Doclick */
+  .foot { background: var(--deep); color: #fff; padding: 30px 24px calc(100px + env(safe-area-inset-bottom)); }
+  @media (min-width: 560px) { .foot { padding-bottom: 34px; } }
+  .foot h2 { font-family: var(--serif); font-weight: 400; font-size: 22px; line-height: 1.2; }
+  .foot p { font-size: 13px; color: rgba(255,255,255,.7); margin-top: 8px; line-height: 1.5; }
+  .foot .explore { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; font-size: 13.5px; font-weight: 700; color: var(--accent); }
+  .foot .sign { display: flex; justify-content: space-between; align-items: center; margin-top: 28px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.14); font-size: 11.5px; color: rgba(255,255,255,.55); }
+  .foot .sign a { color: rgba(255,255,255,.85); font-weight: 600; }
+
+  /* Barra fija de WhatsApp */
+  .dock { position: fixed; z-index: 10; left: 50%; bottom: 0; width: 100%; max-width: 460px; transform: translate(-50%, 110%); padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); transition: transform .3s cubic-bezier(.2,.8,.2,1); pointer-events: none; }
+  .dock.on { transform: translate(-50%, 0); pointer-events: auto; }
+  .dock a { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 15px; border-radius: 16px; background: var(--accent); color: var(--accent-ink); font-weight: 800; font-size: 15px; box-shadow: 0 12px 30px -8px rgba(0,0,0,.45); }
+
+  .loading { padding: 120px 24px; text-align: center; color: var(--soft); font-size: 14px; }
+  .notfound { padding: 90px 28px; text-align: center; }
+  .notfound h1 { font-family: var(--serif); font-weight: 400; font-size: 30px; margin-bottom: 10px; }
+  .notfound p { color: var(--soft); margin-bottom: 24px; }
+  .notfound a { display: inline-block; padding: 14px 22px; border-radius: 14px; background: var(--deep); color: #fff; font-weight: 700; }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 </head>
 <body>
 
-<main class="lb" id="lb-main">
-  <p style="padding:80px 0;color:var(--muted);">Cargando...</p>
-</main>
+<div class="stage">
+  <main class="lp" id="lp"><p class="loading">Cargando…</p></main>
+</div>
+<div class="dock" id="dock" aria-hidden="true"></div>
 
 <script src="data.js"></script>
 <script>
@@ -60,59 +155,151 @@
 const UTM='utm_source=instagram&utm_medium=bio&utm_campaign=landing_medico';
 function trackLink(doctorId,type){gtag('event','click_link_bio',{doctor_id:doctorId,link_type:type});}
 function isPending(text){return !text||text.includes('[Pendiente');}
+function esc(t){return String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+// Texto oscuro o claro sobre el color de acento, según su luminancia
+function inkFor(hex){const n=parseInt(hex.replace('#',''),16);const [r,g,b]=[n>>16&255,n>>8&255,n&255].map(v=>{v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4);});return (0.2126*r+0.7152*g+0.0722*b)>0.3?'#16120E':'#FFFFFF';}
+function formatVePhone(num){const d=String(num).replace(/^58/,'');return d.length===10?`0${d.slice(0,3)}-${d.slice(3,6)}.${d.slice(6,8)}.${d.slice(8)}`:num;}
 
+const ICON={
+  wa:`<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2S21.8 6.6 21.8 12 17.4 21.8 12 21.8zM12 .2C5.5.2.2 5.5.2 12c0 2.1.5 4.1 1.6 5.9L.1 24l6.3-1.7c1.7.9 3.7 1.4 5.6 1.4 6.5 0 11.8-5.3 11.8-11.8S18.5.2 12 .2z"/></svg>`,
+  arrow:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>`,
+  share:`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v13"/></svg>`,
+  check:`<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`,
+  pin:`<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+  ig:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg>`,
+  user:`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>`,
+  play:`<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>`
+};
+
+const DEFAULT_THEME={deep:'#0D4A3A',accent:'#C4956A',paper:'#F7F5F2',ink:'#1A1A1A',soft:'#5C6B66'};
 const doctor=getDoctorById(new URLSearchParams(window.location.search).get('id'));
-const main=document.getElementById('lb-main');
+const lp=document.getElementById('lp');
 
 if(!doctor){
   gtag('event','page_view');
-  main.innerHTML=`<a href="index.html" class="lb-brand"><div class="logo-mark">D</div>Doclick</a><h1>Enlace no encontrado</h1><p class="lb-bio">Este enlace no existe o ha sido removido.</p><a class="btn btn-primary" href="index.html?${UTM}">Buscar médicos en Doclick</a>`;
+  lp.innerHTML=`<div class="notfound"><h1>Enlace no encontrado</h1><p>Este enlace no existe o ha sido removido.</p><a href="index.html?${UTM}">Buscar médicos en Doclick</a></div>`;
 } else if(!hasFeaturedPlan(doctor)){
   // La landing de Instagram es parte de Pro/Fundador; el plan Perfil va directo a su perfil.
   window.location.replace(`perfil.html?id=${doctor.id}&${UTM}`);
 } else {
+  const L=doctor.landing||{};
+  const T={...DEFAULT_THEME,...(L.theme||{})};
+  const root=document.documentElement.style;
+  ['deep','accent','paper','ink','soft'].forEach(k=>root.setProperty(`--${k}`,T[k]));
+  root.setProperty('--accent-ink',inkFor(T.accent));
+  document.getElementById('theme-color').content=T.deep;
+
   const fullName=`${doctor.title} ${doctor.name}`;
   const pageTitle=`${fullName} — ${doctor.specialty} | Doclick`;
   document.title=pageTitle;
   document.getElementById('og-title').content=pageTitle;
   if(!isPending(doctor.shortBio)){document.getElementById('page-desc').content=doctor.shortBio;document.getElementById('og-desc').content=doctor.shortBio;}
+  // Sin portada vertical propia, se usa un encabezado compacto con la foto en círculo
+  const coverUrl=L.coverUrl;
+  const ogImg=coverUrl||doctor.photoUrl;
+  if(ogImg)document.getElementById('og-image').content=`${DOCLICK.domain}/${ogImg}`;
   gtag('event','page_view',{page_title:pageTitle});
   gtag('event','view_link_bio',{doctor_id:doctor.id,plan:doctor.plan});
 
-  const waIcon=`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>`;
   const numbers=doctor.whatsappNumbers||[doctor.whatsappNumber];
-  const waHtml=numbers.map((num,i,arr)=>`
-    <a class="btn btn-wa" href="${buildWaLink(num,'Hola, vi tu Instagram y quiero agendar una cita.')}" target="_blank" rel="noopener" onclick="trackLink(${doctor.id},'whatsapp')">${waIcon}Agendar cita por WhatsApp${arr.length>1?` (línea ${i+1})`:''}</a>`).join('');
+  const waMsg='Hola, vi tu Instagram y quiero agendar una cita.';
+  const waMain=buildWaLink(numbers[0],waMsg);
+  const regParts=[doctor.mpps?`MPPS ${doctor.mpps}`:'',doctor.cmm?`CMM ${doctor.cmm}`:''].filter(Boolean);
+  const founder=doctor.plan==='fundador'?(doctor.title==='Dra.'?'Médica fundadora':'Médico fundador'):'Doclick Pro';
+  let n=0;const num=()=>String(++n).padStart(2,'0');
 
-  const profileLabel=doctor.heroVideo&&doctor.heroVideo.youtubeId?'Ver mi perfil y video en Doclick':'Ver mi perfil en Doclick';
-  const profileHtml=`<a class="btn btn-primary" href="perfil.html?id=${doctor.id}&${UTM}" onclick="trackLink(${doctor.id},'perfil')"><div class="logo-mark" style="width:20px;height:20px;font-size:10px;background:#fff;color:var(--forest);">D</div>${profileLabel}</a>`;
+  // Portada
+  const coverHtml=`
+    <header class="cover${coverUrl?'':' cover--compact'}">
+      ${coverUrl?`<img src="${coverUrl}" alt="${esc(fullName)}" fetchpriority="high">`:''}
+      <div class="topbar">
+        <a class="pill" href="index.html?${UTM}" onclick="trackLink(${doctor.id},'logo')" aria-label="Ir a Doclick"><span class="d">D</span>Doclick</a>
+        <button class="icon-btn" id="share" type="button" aria-label="Compartir esta página">${ICON.share}</button>
+      </div>
+      <div class="cover-meta">
+        ${coverUrl?'':`<div class="cover-avatar">${doctor.photoUrl?`<img src="${doctor.photoUrl}" alt="${esc(fullName)}">`:doctor.initials}</div>`}
+        ${L.logoUrl?`<img class="cover-logo" src="${L.logoUrl}" alt="Logo de ${esc(fullName)}">`:''}
+        <div class="badge">${founder}</div>
+        <h1><small>${doctor.title}</small>${esc(doctor.name)}</h1>
+        <p class="spec">${esc(doctor.specialty)}</p>
+        ${regParts.length?`<p class="reg">${regParts.join(' · ')}</p>`:''}
+      </div>
+    </header>`;
+
+  // Llamado principal
+  const ctaHtml=`
+    <section class="cta" aria-label="Agendar cita">
+      <a class="btn-main" id="main-cta" href="${waMain}" target="_blank" rel="noopener" onclick="trackLink(${doctor.id},'whatsapp')">
+        <span class="ic">${ICON.wa}</span>
+        <span><strong>Agenda tu cita</strong><span>WhatsApp · ${formatVePhone(numbers[0])}</span></span>
+        <span class="arrow">${ICON.arrow}</span>
+      </a>
+      ${numbers.length>1?`<div class="alt-lines">${numbers.slice(1).map((num,i)=>`<a href="${buildWaLink(num,waMsg)}" target="_blank" rel="noopener" onclick="trackLink(${doctor.id},'whatsapp')">Línea ${i+2} · ${formatVePhone(num)}</a>`).join('')}</div>`:''}
+      <p class="verified">${ICON.check}Perfil verificado por Doclick</p>
+    </section>`;
+
+  const factsHtml=(L.facts||[]).length?`<section class="facts" aria-label="Datos destacados">${L.facts.slice(0,3).map(([b,s])=>`<div class="fact"><b>${esc(b)}</b><span>${esc(s)}</span></div>`).join('')}</section>`:'';
+
+  const aboutHtml=!isPending(doctor.shortBio)?`
+    <section class="block" aria-label="Sobre ${esc(fullName)}">
+      <p class="eyebrow"><i>${num()}</i>Sobre ${doctor.title==='Dra.'?'la doctora':'el doctor'}</p>
+      <p class="lead">${esc(doctor.shortBio)}</p>
+      ${(doctor.specialties||[]).length?`<ul class="chips" aria-label="Áreas de atención">${doctor.specialties.map(s=>`<li>${esc(s)}</li>`).join('')}</ul>`:''}
+    </section>`:'';
+
+  const v=doctor.heroVideo;
+  const videoHtml=v&&v.youtubeId?`
+    <section class="block" aria-label="Video">
+      <p class="eyebrow"><i>${num()}</i>Conócele en video</p>
+      <button class="video" id="video" type="button" aria-label="Reproducir: ${esc(v.title)}">
+        <img src="https://i.ytimg.com/vi/${v.youtubeId}/hqdefault.jpg" alt="" loading="lazy">
+        <span class="play"><span>${ICON.play}</span></span>
+      </button>
+      <p class="video-cap">${esc(v.title)}${v.duration?`<span>${v.duration}</span>`:''}</p>
+    </section>`:'';
 
   const hasAddress=!isPending(doctor.address);
-  const mapsHtml=hasAddress?`<a class="btn btn-ghost" href="${doctor.mapUrl||buildMapsLink(doctor.mapQuery||doctor.address)}" target="_blank" rel="noopener" onclick="trackLink(${doctor.id},'maps')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Cómo llegar al consultorio</a>${!isPending(doctor.schedule)?`<p class="lb-schedule">${doctor.schedule}</p>`:''}`:'';
+  const scheduleRows=!isPending(doctor.schedule)?doctor.schedule.split(' · ').map(part=>{const i=part.indexOf(':');return i>0&&i<20?`<div><dt>${esc(part.slice(0,i))}</dt><dd>${esc(part.slice(i+1).trim())}</dd></div>`:`<div><dt></dt><dd>${esc(part)}</dd></div>`;}).join(''):'';
+  const placeHtml=hasAddress||scheduleRows?`
+    <section class="block" aria-label="Consulta">
+      <p class="eyebrow"><i>${num()}</i>Consulta</p>
+      ${hasAddress?`<p class="place">${esc(doctor.address)}</p>`:''}
+      ${scheduleRows?`<dl class="hours">${scheduleRows}</dl>`:''}
+      ${hasAddress?`<a class="btn-line" href="${doctor.mapUrl||buildMapsLink(doctor.mapQuery||doctor.address)}" target="_blank" rel="noopener" onclick="trackLink(${doctor.id},'maps')">${ICON.pin}Cómo llegar</a>`:''}
+    </section>`:'';
 
-  const regParts=[doctor.mpps?`MPPS ${doctor.mpps}`:'',doctor.cmm?`CMM ${doctor.cmm}`:''].filter(Boolean);
-  const foundingBadge=doctor.plan==='fundador'?`<div class="badge-founding" style="margin-bottom:14px;">${doctor.title==='Dra.'?'Médica fundadora':'Médico fundador'} · Doclick</div>`:'';
+  const rows=[];
+  if(doctor.instagramHandle)rows.push(`<a href="https://instagram.com/${doctor.instagramHandle}" target="_blank" rel="noopener" onclick="trackLink(${doctor.id},'instagram')"><span class="ri">${ICON.ig}</span><span><strong>Instagram</strong><small>@${esc(doctor.instagramHandle)}</small></span><span class="go">${ICON.arrow}</span></a>`);
+  rows.push(`<a href="perfil.html?id=${doctor.id}&${UTM}" onclick="trackLink(${doctor.id},'perfil')"><span class="ri">${ICON.user}</span><span><strong>Perfil completo</strong><small>${v&&v.youtubeId?'Video, horarios y más en Doclick':'Horarios y más en Doclick'}</small></span><span class="go">${ICON.arrow}</span></a>`);
+  const linksHtml=`<section class="block rows" aria-label="Más enlaces">${rows.join('')}</section>`;
 
-  main.innerHTML=`
-    <a href="index.html?${UTM}" class="lb-brand" onclick="trackLink(${doctor.id},'logo')"><div class="logo-mark">D</div>Doclick</a>
-    <div class="lb-photo">${doctor.photoUrl?`<img src="${doctor.photoUrl}" alt="Foto de ${fullName}">`:doctor.initials}</div>
-    ${foundingBadge}
-    <h1>${fullName}</h1>
-    <p class="lb-specialty">${doctor.specialty}</p>
-    ${regParts.length?`<p class="lb-reg">${regParts.join(' · ')}</p>`:''}
-    <span class="lb-verified"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Perfil verificado por Doclick</span>
-    ${!isPending(doctor.shortBio)?`<p class="lb-bio">${doctor.shortBio}</p>`:'<div style="height:16px"></div>'}
-    <nav class="lb-links" aria-label="Enlaces de ${fullName}">
-      ${waHtml}
-      ${profileHtml}
-      ${mapsHtml}
-    </nav>
-    <section class="lb-promo" aria-label="Descubre Doclick">
+  const footHtml=`
+    <footer class="foot">
       <h2>¿Buscas otro especialista?</h2>
-      <p>En Doclick encuentras médicos verificados, con video, y les escribes directo por WhatsApp.</p>
-      <a class="btn btn-copper" href="index.html?${UTM}#directorio" onclick="trackLink(${doctor.id},'directorio')">Explorar la guía Doclick</a>
-    </section>
-    <p class="lb-foot">¿Eres médico? <a href="${buildWaLink(DOCLICK.contactWhatsapp,DOCLICK.contactMessage)}" target="_blank" rel="noopener" onclick="trackLink(${doctor.id},'recruitment')">Ten tu página como esta</a></p>`;
+      <p>En Doclick encuentras médicos verificados en video y les escribes directo por WhatsApp.</p>
+      <a class="explore" href="index.html?${UTM}#directorio" onclick="trackLink(${doctor.id},'directorio')">Explorar la guía Doclick ${ICON.arrow}</a>
+      <div class="sign"><span>Página creada por Doclick</span><a href="${buildWaLink(DOCLICK.contactWhatsapp,DOCLICK.contactMessage)}" target="_blank" rel="noopener" onclick="trackLink(${doctor.id},'recruitment')">¿Eres médico?</a></div>
+    </footer>`;
+
+  lp.innerHTML=coverHtml+ctaHtml+factsHtml+aboutHtml+videoHtml+placeHtml+linksHtml+footHtml;
+
+  // Video: carga el reproductor solo al tocar
+  const vb=document.getElementById('video');
+  if(vb)vb.addEventListener('click',()=>{trackLink(doctor.id,'video');vb.innerHTML=`<iframe src="https://www.youtube.com/embed/${v.youtubeId}?autoplay=1&rel=0" title="${esc(v.title)}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;},{once:true});
+
+  // Compartir
+  document.getElementById('share').addEventListener('click',async()=>{
+    trackLink(doctor.id,'share');
+    const data={title:fullName,text:`${fullName} — ${doctor.specialty}`,url:location.href};
+    try{if(navigator.share)await navigator.share(data);else{await navigator.clipboard.writeText(location.href);alert('Enlace copiado');}}catch(e){}
+  });
+
+  // Barra fija de WhatsApp cuando el botón principal sale de pantalla
+  const dock=document.getElementById('dock');
+  dock.innerHTML=`<a href="${waMain}" target="_blank" rel="noopener" onclick="trackLink(${doctor.id},'whatsapp_dock')">${ICON.wa}Agendar por WhatsApp</a>`;
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(([e])=>{const on=!e.isIntersecting&&e.boundingClientRect.top<0;dock.classList.toggle('on',on);dock.setAttribute('aria-hidden',String(!on));}).observe(document.getElementById('main-cta'));
+  }
 }
 </script>
 
