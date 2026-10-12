@@ -77,6 +77,30 @@ const DOCTORS = [
     schedule: "Lunes a viernes: 12:00pm–3:00pm",
     heroVideo: { title: "Conoce al Dr. Dióver González", duration: "1:38", youtubeId: "N9Sx3-YjhIY" },
     pastVideos: []
+  },
+  {
+    id: 9,
+    title: "Dra.",
+    name: "Florimar Pinto",
+    initials: "FP",
+    specialty: "Psiquiatría",
+    city: "",
+    plan: "fundador",
+    planHasta: "",
+    mpps: "69118",
+    cmm: "6329",
+    hasVideo: false,
+    photoUrl: "images/dra-florimar-pinto.jpg",
+    whatsappNumber: "584249587296",
+    instagramHandle: "floripsiquiatra",
+    shortBio: "Médico psiquiatra egresada de la ULA, con 18 años como especialista. Servicio de salud mental.",
+    longBio: "Médico psiquiatra egresada de la Universidad de Los Andes (ULA), con 18 años de experiencia como especialista. Miembro de la Sociedad Venezolana de Psiquiatría (SVP) y de la Asociación Venezolana de Psiquiatría (AVP). Ofrece un servicio de salud mental integral, complementado con formación en ontoescritura, psicología holística y gestalt básico.",
+    specialties: ["Salud mental", "Psiquiatría", "Telemedicina", "Ontoescritura", "Psicología holística", "Gestalt"],
+    address: "Centro de Especialidades Médicas (Edificio CEMCA), Av. Andrés Eloy Blanco, Maturín, Monagas",
+    mapQuery: "PRQJ+V4J, Av. Andres Eloy Blanco, Maturín 6201, Monagas, Venezuela",
+    schedule: "Presencial: mar, jue y vie, 9:00am–4:00pm · Telemedicina: lun, miér y sáb",
+    heroVideo: { title: "Conoce a la Dra. Florimar Pinto", duration: "", youtubeId: null },
+    pastVideos: []
   }
 ];
 

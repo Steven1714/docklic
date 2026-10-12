@@ -83,7 +83,7 @@ if(!doctor){
   const schema={"@context":"https://schema.org","@type":"Physician","name":fullName,"medicalSpecialty":doctor.specialty,"telephone":`+${doctor.whatsappNumber}`,"url":window.location.href,"description":doctor.shortBio};
   document.getElementById('schema-json').textContent=JSON.stringify(schema);
 
-  const foundingBadge=doctor.plan==='fundador'?`<div class="badge-founding" style="margin-bottom:14px;">Médico fundador · Doclick</div>`:'';
+  const foundingBadge=doctor.plan==='fundador'?`<div class="badge-founding" style="margin-bottom:14px;">${doctor.title==='Dra.'?'Médica fundadora':'Médico fundador'} · Doclick</div>`:'';
   const videoBadge=doctor.hasVideo?`<span class="tag" style="background:rgba(196,149,106,0.15);color:var(--copper-dark);border-color:rgba(196,149,106,0.3);"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Con video</span>`:'';
 
   const regParts=[doctor.mpps?`MPPS ${doctor.mpps}`:'',doctor.cmm?`CMM ${doctor.cmm}`:''].filter(Boolean);

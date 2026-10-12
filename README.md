@@ -18,6 +18,16 @@
 | `data.js` | Datos centralizados (sin campo `city` hardcodeado) |
 | `styles.css` | Estilos compartidos con nueva paleta y tipografías |
 
+## v3.15 — Dra. Florimar Pinto (Psiquiatría), 4ta fundadora
+
+- Nuevo perfil (`data.js`, id 9): foto de su sesión en Drive (carpeta "Doclick video fundadores → Florimar", `IMG_0229`, recortada a `images/dra-florimar-pinto.jpg`), MPPS 69118, CMM 6329, WhatsApp 0424-958.72.96 (sacado de su `wa.link` de Instagram), Instagram `@floripsiquiatra`. Bio tomada de su bio de Instagram, sin agregar nada.
+- Consulta: Centro de Especialidades Médicas (Edificio CEMCA), Av. Andrés Eloy Blanco, Maturín — Maps usa el Plus Code `PRQJ+V4J` (`mapQuery`). Horario: presencial mar/jue/vie 9am–4pm, telemedicina lun/miér/sáb.
+- Link corto: `doclick.net/drflorimar`.
+- La insignia ahora dice **"Médica fundadora"** cuando `title` es `"Dra."` (en `perfil.html` y `link.html`).
+- No se publicó su RIF ni su número SVP (840) — no hay campo para eso y el RIF es dato fiscal.
+- **Pendiente**: su video de presentación — cuando esté en YouTube, poner el ID en `heroVideo.youtubeId`, la duración, y `hasVideo: true`.
+- Cupos fundadores: 4 de 5 ocupados.
+
 ## v3.14 — Página para el link de la bio de Instagram (Pro / Fundador)
 
 - Nueva plantilla `link.html` tipo "Linktree": foto, nombre, especialidad, insignia de fundador, bio corta, botón(es) de WhatsApp, botón al perfil completo en Doclick, cómo llegar y un bloque que promociona la guía Doclick. Una sola plantilla para todos: se llena sola desde `data.js` con `link.html?id=ID`.

@@ -91,7 +91,7 @@ if(!doctor){
   const mapsHtml=hasAddress?`<a class="btn btn-ghost" href="${doctor.mapUrl||buildMapsLink(doctor.mapQuery||doctor.address)}" target="_blank" rel="noopener" onclick="trackLink(${doctor.id},'maps')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Cómo llegar al consultorio</a>${!isPending(doctor.schedule)?`<p class="lb-schedule">${doctor.schedule}</p>`:''}`:'';
 
   const regParts=[doctor.mpps?`MPPS ${doctor.mpps}`:'',doctor.cmm?`CMM ${doctor.cmm}`:''].filter(Boolean);
-  const foundingBadge=doctor.plan==='fundador'?`<div class="badge-founding" style="margin-bottom:14px;">Médico fundador · Doclick</div>`:'';
+  const foundingBadge=doctor.plan==='fundador'?`<div class="badge-founding" style="margin-bottom:14px;">${doctor.title==='Dra.'?'Médica fundadora':'Médico fundador'} · Doclick</div>`:'';
 
   main.innerHTML=`
     <a href="index.html?${UTM}" class="lb-brand" onclick="trackLink(${doctor.id},'logo')"><div class="logo-mark">D</div>Doclick</a>
