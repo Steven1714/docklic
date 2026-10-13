@@ -53,7 +53,7 @@
 - Link corto: `doclick.net/drflorimar`.
 - La insignia ahora dice **"Médica fundadora"** cuando `title` es `"Dra."` (en `perfil.html` y `link.html`).
 - No se publicó su RIF ni su número SVP (840) — no hay campo para eso y el RIF es dato fiscal.
-- **Pendiente**: su video de presentación — cuando esté en YouTube, poner el ID en `heroVideo.youtubeId`, la duración, y `hasVideo: true`.
+- Video de presentación cargado el 2026-10-12 (`SVwEoEXR7sc`, 1:24), `hasVideo: true`.
 - Cupos fundadores: 4 de 5 ocupados.
 
 ## v3.14 — Página para el link de la bio de Instagram (Pro / Fundador)
