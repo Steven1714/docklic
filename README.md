@@ -38,7 +38,7 @@
 - **Orden del directorio**: Pro y Destacado primero, mezclados con una semilla que cambia cada día (`ordenarPerfiles`). Básico después, en orden alfabético.
 - **Pestañas** Médicos · Odontología · Fisioterapia · Enfermería a domicilio (`TIPOS` en `data.js`; `domicilio: true` activa los filtros de domicilio y zona). Una pestaña sin perfiles no aparece. En Fisioterapia y Enfermería hay filtros "Atiende a domicilio" y por zona. `index.html?tipo=fisioterapia&esp=...` entra ya filtrado.
 - **`registro.html`** (nueva):
-  - Tres planes y la oferta de 30 días. La nota "tus 30 días empiezan el día del lanzamiento" se muestra hasta `CONFIG.FECHA_LANZAMIENTO`.
+  - Tres planes y la oferta de 30 días. La nota "tus 30 días empiezan el día del lanzamiento" se muestra solo antes de `CONFIG.FECHA_LANZAMIENTO` (lanzamiento: 2026-10-16).
   - "Registrarme gratis" abre `CONFIG.FORM_REGISTRO_URL`. Mientras siga en `"#"`, abre WhatsApp para que el botón no quede muerto.
   - "Quiero el Destacado o el Pro" abre WhatsApp.
   - Eventos GA4 `view_registro` y `click_registro` (`boton: "gratis" | "pago"`).
@@ -46,7 +46,6 @@
 - **Textos**: "guía médica" pasa a "guía de salud" en el título, la meta descripción, el hero y el pie de página. Donde se habla de médicos en concreto, sigue diciendo médicos.
 - **GA4**: `click_whatsapp` y `view_profile` siguen con `doctor_id`. `plan` ahora es el plan efectivo, así que los fundadores aparecen como `pro`, y `click_whatsapp` suma `fundador: true`.
 - **Pendientes**:
-  - Ajustar `CONFIG.FECHA_LANZAMIENTO`.
   - Cargar MPPS/CMM del Dr. Guerra. Quedó con `verificado: true` mientras tanto.
 
 ## v3.19 — Oferta: 2 meses gratis para todos los médicos

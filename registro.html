@@ -124,7 +124,7 @@ wire(document.getElementById('cta-pago'),pagoUrl,'pago');
 document.querySelectorAll('#pricing-grid [data-boton]').forEach(el=>wire(el,el.dataset.boton==='gratis'?formUrl:pagoUrl,el.dataset.boton));
 
 document.querySelectorAll('.dias-prueba').forEach(el=>el.textContent=CONFIG.DIAS_PRUEBA);
-document.getElementById('launch-note').hidden=hoyISO()>CONFIG.FECHA_LANZAMIENTO;
+document.getElementById('launch-note').hidden=hoyISO()>=CONFIG.FECHA_LANZAMIENTO;
 </script>
 
 </body>
