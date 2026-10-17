@@ -11,15 +11,17 @@ const CONFIG = {
 };
 
 // Categorías del directorio (pestañas). Una pestaña sin perfiles no se muestra.
+// domicilio: true → la pestaña tiene filtros "Atiende a domicilio" y por zona.
 const TIPOS = [
   { id: "medico", label: "Médicos", titulo: "Médicos verificados" },
-  { id: "fisioterapia", label: "Fisioterapia", titulo: "Fisioterapia" },
-  { id: "enfermeria", label: "Enfermería a domicilio", titulo: "Enfermería a domicilio" }
+  { id: "odontologia", label: "Odontología", titulo: "Odontólogos verificados" },
+  { id: "fisioterapia", label: "Fisioterapia", titulo: "Fisioterapia", domicilio: true },
+  { id: "enfermeria", label: "Enfermería a domicilio", titulo: "Enfermería a domicilio", domicilio: true }
 ];
 
-// tipo: "medico" | "fisioterapia" | "enfermeria"
+// tipo: "medico" | "odontologia" | "fisioterapia" | "enfermeria"
 // title: tratamiento antes del nombre ("Dr.", "Dra."). Vacío para licenciados: nunca "Dr.".
-// titulo: título visible debajo del nombre ("Médico cirujano", "Lic. en Fisioterapia", "Lic. en Enfermería").
+// titulo: título visible debajo del nombre ("Médico cirujano", "Odontólogo", "Lic. en Fisioterapia", "Lic. en Enfermería").
 // plan: "basico" | "destacado" | "pro". Usar siempre planEfectivo(perfil), nunca perfil.plan directo.
 // prueba: null | { plan: "destacado" | "pro", hasta: "AAAA-MM-DD" } — prueba gratis (30 días).
 //   Los fundadores tienen 60 días: van con plan "pro" y se ajusta a mano al terminar.
@@ -27,7 +29,7 @@ const TIPOS = [
 // fundador: true solo para los fundadores (sello "Fundador").
 // verificado: true solo si la colegiatura se comprobó (sello "Verificado").
 // mpps: registro MPPS. cmm: número del Colegio de Médicos de Monagas.
-//   Otros colegios (fisioterapia, enfermería): colegio (sigla, ej. "CFV") + colegiatura (número). Vacío = no se muestra.
+//   Otros colegios (odontología, fisioterapia, enfermería): colegio (sigla, ej. "COV", "CFV") + colegiatura (número). Vacío = no se muestra.
 // telefono: (opcional) teléfono como se muestra en el plan Básico. Vacío = se forma desde whatsappNumber.
 // zona: zona de Maturín. domicilio: atiende a domicilio (filtro en Fisioterapia y Enfermería).
 // landing: (opcional) personalización de link.html — theme {deep, accent, paper, ink, soft}, coverUrl (foto vertical 4:5), logoUrl, facts [[dato, detalle], ...] (máx. 3, solo datos confirmados).

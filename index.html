@@ -12,7 +12,7 @@
   gtag('config', 'G-QHY2PM07NM');
 </script>
 <title>Doclick — Guía de salud con video · Maturín</title>
-<meta name="description" content="La guía de salud de Maturín: médicos, fisioterapia y enfermería a domicilio. Perfiles verificados con video y WhatsApp directo. Regístrate gratis.">
+<meta name="description" content="La guía de salud de Maturín: médicos, odontólogos, fisioterapia y enfermería a domicilio. Perfiles verificados con video y WhatsApp directo. Regístrate gratis.">
 
 <!-- Favicon -->
 <link rel="icon" type="image/png" href="images/favicon.png">
@@ -20,7 +20,7 @@
 
 <!-- Open Graph -->
 <meta property="og:title" content="Doclick — Guía de salud con video">
-<meta property="og:description" content="La guía de salud de Maturín donde los pacientes te ven antes de escribirte. Médicos, fisioterapia y enfermería a domicilio.">
+<meta property="og:description" content="La guía de salud de Maturín donde los pacientes te ven antes de escribirte. Médicos, odontólogos, fisioterapia y enfermería a domicilio.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://doclick.net">
 <meta property="og:image" content="https://doclick.net/images/og-image.png">
@@ -39,7 +39,7 @@
   "@context": "https://schema.org",
   "@type": "MedicalWebPage",
   "name": "Doclick — Guía de salud con video",
-  "description": "Guía de salud de Maturín: médicos, fisioterapia y enfermería a domicilio. Perfiles con video y contacto directo por WhatsApp.",
+  "description": "Guía de salud de Maturín: médicos, odontólogos, fisioterapia y enfermería a domicilio. Perfiles con video y contacto directo por WhatsApp.",
   "url": "https://doclick.net"
 }
 </script>
@@ -282,8 +282,8 @@ function setupTab(){
   document.getElementById('dir-heading').textContent=tipo.titulo;
   const lista=porTipo();
   fillSelect(specSel,[...new Set(lista.map(d=>d.specialty))].sort((a,b)=>a.localeCompare(b,'es')),'Todas las especialidades');
-  // Domicilio y zona solo en Fisioterapia y Enfermería
-  const esCasa=tipoActivo!=='medico';
+  // Domicilio y zona solo en las pestañas marcadas con domicilio (Fisioterapia y Enfermería)
+  const esCasa=!!tipo.domicilio;
   const zonas=[...new Set(lista.map(d=>d.zona).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'es'));
   fillSelect(zonaSel,zonas,'Todas las zonas');
   zonaSel.hidden=!esCasa||!zonas.length;
@@ -304,7 +304,7 @@ function tagsHtml(d){
   else if(video)tags.push(`<span class="tag tag-copper">Pro · Video</span>`);
   if(d.verificado)tags.push(`<span class="tag tag-forest">Verificado</span>`);
   if(d.domicilio)tags.push(`<span class="city-chip">A domicilio</span>`);
-  if(d.zona&&getTipo(d)!=='medico')tags.push(`<span class="city-chip">${d.zona}</span>`);
+  if(d.zona&&TIPOS.find(t=>t.id===getTipo(d))?.domicilio)tags.push(`<span class="city-chip">${d.zona}</span>`);
   return tags.join('');
 }
 function cardHtml(d){
@@ -337,7 +337,7 @@ function render(list){
 }
 
 // Buscador tolerante: ignora acentos/mayúsculas y entiende que "urólogo", "uróloga" y "urología" son lo mismo.
-const STOPWORDS=new Set(['dr','dra','doctor','doctora','lic','licenciado','licenciada','de','del','la','el','en','y','con','para','medico','medica','especialista']);
+const STOPWORDS=new Set(['dr','dra','doctor','doctora','lic','licenciado','licenciada','de','del','la','el','en','y','con','para','medico','medica','odontologo','odontologa','especialista']);
 const normText=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9ñ ]/g,' ');
 function stem(w){return w.replace(/olog(o|a|os|as|ia|ias|ico|ica)$/,'olog').replace(/iatr(a|as|ia|ias|ico|ica)$/,'iatr').replace(/ciruj(ano|ana|anos|anas)$/,'cirug').replace(/cirugi(a|as)$/,'cirug').replace(/terap(euta|eutas|ia|ias)$/,'terap').replace(/(ista|istas)$/,'').replace(/s$/,'');}
 const tokens=s=>normText(s).split(/\s+/).filter(Boolean);

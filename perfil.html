@@ -86,7 +86,7 @@ if(!doctor){
 
   const isReal=t=>t&&!String(t).includes('[Pendiente');
   const profileUrl=`${DOCLICK.domain}/perfil.html?id=${doctor.id}`;
-  const schema={"@context":"https://schema.org","@type":getTipo(doctor)==='medico'?"Physician":"MedicalBusiness","name":fullName,"medicalSpecialty":doctor.specialty,"telephone":`+${doctor.whatsappNumber}`,"url":profileUrl};
+  const schema={"@context":"https://schema.org","@type":{medico:"Physician",odontologia:"Dentist"}[getTipo(doctor)]||"MedicalBusiness","name":fullName,"medicalSpecialty":doctor.specialty,"telephone":`+${doctor.whatsappNumber}`,"url":profileUrl};
   if(isReal(doctor.shortBio))schema.description=doctor.shortBio;
   if(doctor.photoUrl)schema.image=`${DOCLICK.domain}/${doctor.photoUrl}`;
   if(isReal(doctor.address))schema.address={"@type":"PostalAddress","streetAddress":doctor.address,"addressLocality":"Maturín","addressRegion":"Monagas","addressCountry":"VE"};

@@ -28,15 +28,15 @@
   - **Destacado**: perfil sin video.
   - **Pro**: perfil completo con video y landing de Instagram (`link.html`).
 - **Campos nuevos**:
-  - `tipo` (`medico`/`fisioterapia`/`enfermeria`)
+  - `tipo` (`medico`/`odontologia`/`fisioterapia`/`enfermeria`)
   - `titulo` (se muestra debajo del nombre)
   - `verificado` (el sello sale solo si es `true`)
   - `zona`, `domicilio`
-  - `colegio` + `colegiatura` para colegios que no son el CMM (ej. `colegio: "CFV"`)
+  - `colegio` + `colegiatura` para colegios que no son el CMM (ej. `colegio: "COV"` o `"CFV"`)
   - `telefono` (opcional)
   - Los licenciados llevan `title: ""`, así nunca dicen "Dr.".
 - **Orden del directorio**: Pro y Destacado primero, mezclados con una semilla que cambia cada día (`ordenarPerfiles`). Básico después, en orden alfabético.
-- **Pestañas** Médicos · Fisioterapia · Enfermería a domicilio. Una pestaña sin perfiles no aparece. En Fisioterapia y Enfermería hay filtros "Atiende a domicilio" y por zona. `index.html?tipo=fisioterapia&esp=...` entra ya filtrado.
+- **Pestañas** Médicos · Odontología · Fisioterapia · Enfermería a domicilio (`TIPOS` en `data.js`; `domicilio: true` activa los filtros de domicilio y zona). Una pestaña sin perfiles no aparece. En Fisioterapia y Enfermería hay filtros "Atiende a domicilio" y por zona. `index.html?tipo=fisioterapia&esp=...` entra ya filtrado.
 - **`registro.html`** (nueva):
   - Tres planes y la oferta de 30 días. La nota "tus 30 días empiezan el día del lanzamiento" se muestra hasta `CONFIG.FECHA_LANZAMIENTO`.
   - "Registrarme gratis" abre `CONFIG.FORM_REGISTRO_URL`. Mientras siga en `"#"`, abre WhatsApp para que el botón no quede muerto.
