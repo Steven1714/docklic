@@ -46,7 +46,6 @@
 - **Textos**: "guía médica" pasa a "guía de salud" en el título, la meta descripción, el hero y el pie de página. Donde se habla de médicos en concreto, sigue diciendo médicos.
 - **GA4**: `click_whatsapp` y `view_profile` siguen con `doctor_id`. `plan` ahora es el plan efectivo, así que los fundadores aparecen como `pro`, y `click_whatsapp` suma `fundador: true`.
 - **Pendientes**:
-  - Pegar el enlace del Google Form en `CONFIG.FORM_REGISTRO_URL`.
   - Ajustar `CONFIG.FECHA_LANZAMIENTO`.
   - Cargar MPPS/CMM del Dr. Guerra. Quedó con `verificado: true` mientras tanto.
 

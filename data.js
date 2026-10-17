@@ -4,7 +4,7 @@
 // ============================================
 
 const CONFIG = {
-  FORM_REGISTRO_URL: "#",           // pegar aquí el enlace del Google Form
+  FORM_REGISTRO_URL: "https://forms.gle/rJDpws9dyrK41cwF7", // enlace del Google Form de registro
   FECHA_LANZAMIENTO: "2026-11-20",  // ajustar a la fecha real
   DIAS_PRUEBA: 30,                  // Destacado y Pro (los fundadores tienen 60)
   WHATSAPP_DOCLICK: "584267619312"
