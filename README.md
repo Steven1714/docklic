@@ -17,6 +17,38 @@
 | `perfil.html` | Perfil individual genérico |
 | `data.js` | Datos centralizados (sin campo `city` hardcodeado) |
 | `styles.css` | Estilos compartidos con nueva paleta y tipografías |
+| `registro.html` | "Soy profesional de salud": planes y registro |
+
+## v3.20 — Planes Básico / Destacado / Pro, categorías y página de registro
+
+- **Planes nuevos** en `data.js`: `plan: "basico" | "destacado" | "pro"` (antes `fundador`/`pro`/`perfil`). El sello de fundador ahora es aparte: `fundador: true`. Los 4 fundadores quedan en `pro` con `fundador: true`.
+- **Prueba gratis**: `prueba: { plan: "destacado" | "pro", hasta: "AAAA-MM-DD" }`. Mientras `hasta` sea hoy o después, el perfil se ve con ese plan; al vencer vuelve solo a su `plan`. Todo el sitio usa `planEfectivo(perfil)`: nunca leer `perfil.plan` directo.
+- **Cómo se ve cada plan**:
+  - **Básico**: iniciales en vez de foto, teléfono como texto, sin WhatsApp. La tarjeta no se puede abrir, y `perfil.html?id=` de un Básico redirige al directorio filtrado por su especialidad.
+  - **Destacado**: perfil sin video.
+  - **Pro**: perfil completo con video y landing de Instagram (`link.html`).
+- **Campos nuevos**:
+  - `tipo` (`medico`/`fisioterapia`/`enfermeria`)
+  - `titulo` (se muestra debajo del nombre)
+  - `verificado` (el sello sale solo si es `true`)
+  - `zona`, `domicilio`
+  - `colegio` + `colegiatura` para colegios que no son el CMM (ej. `colegio: "CFV"`)
+  - `telefono` (opcional)
+  - Los licenciados llevan `title: ""`, así nunca dicen "Dr.".
+- **Orden del directorio**: Pro y Destacado primero, mezclados con una semilla que cambia cada día (`ordenarPerfiles`). Básico después, en orden alfabético.
+- **Pestañas** Médicos · Fisioterapia · Enfermería a domicilio. Una pestaña sin perfiles no aparece. En Fisioterapia y Enfermería hay filtros "Atiende a domicilio" y por zona. `index.html?tipo=fisioterapia&esp=...` entra ya filtrado.
+- **`registro.html`** (nueva):
+  - Tres planes y la oferta de 30 días. La nota "tus 30 días empiezan el día del lanzamiento" se muestra hasta `CONFIG.FECHA_LANZAMIENTO`.
+  - "Registrarme gratis" abre `CONFIG.FORM_REGISTRO_URL`. Mientras siga en `"#"`, abre WhatsApp para que el botón no quede muerto.
+  - "Quiero el Destacado o el Pro" abre WhatsApp.
+  - Eventos GA4 `view_registro` y `click_registro` (`boton: "gratis" | "pago"`).
+- **Precios del index** cambian a Básico gratis / Destacado $10 / Pro $25 con 30 días de prueba. Se quitó la tarjeta "2 meses gratis". Los botones de precios, del hero y del menú ("Soy profesional de salud") llevan a `registro.html`.
+- **Textos**: "guía médica" pasa a "guía de salud" en el título, la meta descripción, el hero y el pie de página. Donde se habla de médicos en concreto, sigue diciendo médicos.
+- **GA4**: `click_whatsapp` y `view_profile` siguen con `doctor_id`. `plan` ahora es el plan efectivo, así que los fundadores aparecen como `pro`, y `click_whatsapp` suma `fundador: true`.
+- **Pendientes**:
+  - Pegar el enlace del Google Form en `CONFIG.FORM_REGISTRO_URL`.
+  - Ajustar `CONFIG.FECHA_LANZAMIENTO`.
+  - Cargar MPPS/CMM del Dr. Guerra. Quedó con `verificado: true` mientras tanto.
 
 ## v3.19 — Oferta: 2 meses gratis para todos los médicos
 
