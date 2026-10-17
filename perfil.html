@@ -11,18 +11,18 @@
   gtag('js', new Date());
   gtag('config', 'G-QHY2PM07NM', {send_page_view: false});
 </script>
-<title id="page-title">Doclick — Perfil médico</title>
-<meta name="description" id="page-desc" content="Perfil médico verificado en Doclick.">
+<title id="page-title">Doclick — Perfil profesional</title>
+<meta name="description" id="page-desc" content="Perfil profesional verificado en Doclick.">
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-<meta property="og:title" id="og-title" content="Doclick — Perfil médico">
-<meta property="og:description" id="og-desc" content="Perfil médico verificado en Doclick.">
+<meta property="og:title" id="og-title" content="Doclick — Perfil profesional">
+<meta property="og:description" id="og-desc" content="Perfil profesional verificado en Doclick.">
 <meta property="og:type" content="profile">
 <meta property="og:url" content="https://doclick.net/perfil.html">
 <meta property="og:image" content="https://doclick.net/images/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" id="tw-title" content="Doclick — Perfil médico">
-<meta name="twitter:description" id="tw-desc" content="Perfil médico verificado en Doclick.">
+<meta name="twitter:title" id="tw-title" content="Doclick — Perfil profesional">
+<meta name="twitter:description" id="tw-desc" content="Perfil profesional verificado en Doclick.">
 <script type="application/ld+json" id="schema-json"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,8 +35,8 @@
   <div class="wrap">
     <a href="index.html" class="logo" aria-label="Doclick — Inicio"><img src="images/logo-doclick.png" alt="Doclick" class="logo-img" width="150" height="28"></a>
     <div class="nav-actions">
-      <a href="index.html#directorio" class="btn btn-ghost" style="font-size:13px;padding:10px 16px;">Buscar médico</a>
-      <a class="btn btn-primary" id="nav-cta" href="#" aria-label="Soy médico, quiero mi perfil">Soy médico, quiero mi perfil</a>
+      <a href="index.html#directorio" class="btn btn-ghost" style="font-size:13px;padding:10px 16px;">Buscar profesional</a>
+      <a class="btn btn-primary" id="nav-cta" href="registro.html">Soy profesional de salud</a>
     </div>
   </div>
 </header>
@@ -47,7 +47,7 @@
 
 <footer>
   <div class="wrap">
-    <div class="footer-brand"><img src="images/logo-doclick.png" alt="Doclick" class="footer-logo" width="96" height="18">© 2026 Doclick — guía médica con video</div>
+    <div class="footer-brand"><img src="images/logo-doclick.png" alt="Doclick" class="footer-logo" width="96" height="18">© 2026 Doclick — guía de salud con video</div>
     <div class="mono">Hecho por médicos, para médicos.</div>
   </div>
 </footer>
@@ -55,9 +55,7 @@
 <script src="data.js"></script>
 <script>
 window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>10);});
-function trackWhatsapp(doctorId,plan){gtag('event','click_whatsapp',plan?{doctor_id:doctorId,plan:plan}:{doctor_id:doctorId});}
-document.getElementById('nav-cta').href=buildWaLink(DOCLICK.contactWhatsapp,DOCLICK.contactMessage);
-document.getElementById('nav-cta').addEventListener('click',()=>trackWhatsapp('recruitment'));
+function trackWhatsapp(doctorId,plan,fundador){const p={doctor_id:doctorId};if(plan)p.plan=plan;if(fundador)p.fundador=true;gtag('event','click_whatsapp',p);}
 
 const params=new URLSearchParams(window.location.search);
 const doctorId=parseInt(params.get('id'));
@@ -66,16 +64,21 @@ const main=document.getElementById('profile-main');
 
 if(!doctor){
   gtag('event','page_view');
-  main.innerHTML=`<div class="wrap" style="padding:120px 24px;text-align:center;"><h1 style="font-size:28px;margin-bottom:16px;font-family:'Playfair Display',serif;">Médico no encontrado</h1><p style="color:var(--muted);margin-bottom:24px;">El perfil que buscas no existe o ha sido removido.</p><a href="index.html#directorio" class="btn btn-primary">Ver directorio médico</a></div>`;
+  main.innerHTML=`<div class="wrap" style="padding:120px 24px;text-align:center;"><h1 style="font-size:28px;margin-bottom:16px;font-family:'Playfair Display',serif;">Perfil no encontrado</h1><p style="color:var(--muted);margin-bottom:24px;">El perfil que buscas no existe o ha sido removido.</p><a href="index.html#directorio" class="btn btn-primary">Ver directorio</a></div>`;
+} else if(!tienePerfil(doctor)){
+  // El plan Básico no tiene página de perfil: se va al directorio filtrado por su especialidad
+  location.replace(`index.html?tipo=${encodeURIComponent(getTipo(doctor))}&esp=${encodeURIComponent(doctor.specialty)}#directorio`);
 } else {
-  const fullName=`${doctor.title} ${doctor.name}`;
+  const plan=planEfectivo(doctor);
+  const isPro=plan==='pro';
+  const fullName=nombreVisible(doctor);
   const city=doctor.city||'Maturín';
   const pageTitle=`${fullName} — ${doctor.specialty} en ${city} | Doclick`;
   document.title=pageTitle;
   document.getElementById('page-title').textContent=pageTitle;
-  document.getElementById('page-desc').content=`${doctor.specialty} en ${city}. Perfil con video, WhatsApp directo.`;
+  document.getElementById('page-desc').content=`${doctor.specialty} en ${city}. ${isPro&&doctor.hasVideo?'Perfil con video, ':''}WhatsApp directo.`;
   gtag('event','page_view',{page_title:pageTitle});
-  gtag('event','view_profile',{doctor_id:doctor.id,plan:doctor.plan});
+  gtag('event','view_profile',{doctor_id:doctor.id,plan:plan});
   document.getElementById('og-title').content=pageTitle;
   document.getElementById('og-desc').content=doctor.shortBio;
   document.getElementById('tw-title').content=pageTitle;
@@ -83,13 +86,13 @@ if(!doctor){
 
   const isReal=t=>t&&!String(t).includes('[Pendiente');
   const profileUrl=`${DOCLICK.domain}/perfil.html?id=${doctor.id}`;
-  const schema={"@context":"https://schema.org","@type":"Physician","name":fullName,"medicalSpecialty":doctor.specialty,"telephone":`+${doctor.whatsappNumber}`,"url":profileUrl};
+  const schema={"@context":"https://schema.org","@type":getTipo(doctor)==='medico'?"Physician":"MedicalBusiness","name":fullName,"medicalSpecialty":doctor.specialty,"telephone":`+${doctor.whatsappNumber}`,"url":profileUrl};
   if(isReal(doctor.shortBio))schema.description=doctor.shortBio;
   if(doctor.photoUrl)schema.image=`${DOCLICK.domain}/${doctor.photoUrl}`;
   if(isReal(doctor.address))schema.address={"@type":"PostalAddress","streetAddress":doctor.address,"addressLocality":"Maturín","addressRegion":"Monagas","addressCountry":"VE"};
   if(doctor.instagramHandle)schema.sameAs=[`https://instagram.com/${doctor.instagramHandle}`];
   // Video de YouTube como VideoObject, para que Google pueda mostrarlo en los resultados
-  const hv=doctor.heroVideo;
+  const hv=isPro?doctor.heroVideo:null;
   if(hv&&hv.youtubeId){
     const [m,sec]=(hv.duration||'').split(':').map(Number);
     const video={"@type":"VideoObject","name":hv.title,"description":isReal(doctor.shortBio)?doctor.shortBio:hv.title,
@@ -100,13 +103,14 @@ if(!doctor){
   }
   document.getElementById('schema-json').textContent=JSON.stringify(schema);
 
-  const foundingBadge=doctor.plan==='fundador'?`<div class="badge-founding" style="margin-bottom:14px;">${doctor.title==='Dra.'?'Médica fundadora':'Médico fundador'} · Doclick</div>`:'';
-  const videoBadge=doctor.hasVideo?`<span class="tag" style="background:rgba(196,149,106,0.15);color:var(--copper-dark);border-color:rgba(196,149,106,0.3);"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Con video</span>`:'';
+  const foundingBadge=doctor.fundador?`<div class="badge-founding" style="margin-bottom:14px;">${doctor.title==='Dra.'?'Médica fundadora':'Médico fundador'} · Doclick</div>`:'';
+  const videoBadge=isPro&&doctor.hasVideo?`<span class="tag" style="background:rgba(196,149,106,0.15);color:var(--copper-dark);border-color:rgba(196,149,106,0.3);"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg> Con video</span>`:'';
 
-  const regParts=[doctor.mpps?`MPPS ${doctor.mpps}`:'',doctor.cmm?`CMM ${doctor.cmm}`:''].filter(Boolean);
-  const regHtml=regParts.length?`<p class="profile-reg">${regParts.join(' · ')}</p>`:'';
+  const reg=registroProfesional(doctor);
+  const regHtml=reg?`<p class="profile-reg">${reg}</p>`:'';
 
-  const heroVideoHtml=doctor.heroVideo?`
+  // Destacado: perfil sencillo, sin video. Pro: perfil completo.
+  const heroVideoHtml=isPro&&doctor.heroVideo?`
     <section class="profile-section" aria-labelledby="video-heading">
       <div class="wrap">
         <span class="eyebrow">Video del mes</span>
@@ -134,7 +138,7 @@ if(!doctor){
       <div class="wrap"><h2 id="bio-heading">Sobre ${fullName}</h2><p class="bio-text">${doctor.longBio}</p></div>
     </section>`:'';
 
-  const pastVideosHtml=(doctor.pastVideos||[]).length?`
+  const pastVideosHtml=isPro&&(doctor.pastVideos||[]).length?`
     <section class="profile-section" aria-labelledby="past-videos-heading">
       <div class="wrap">
         <h2 id="past-videos-heading">Contenido publicado</h2>
@@ -154,22 +158,23 @@ if(!doctor){
     </section>`:'';
 
   main.innerHTML=`
-    <section class="profile-hero" aria-label="Información principal del médico">
+    <section class="profile-hero" aria-label="Información principal del profesional">
       <div class="wrap">
         <div class="profile-avatar" aria-hidden="true">${doctor.photoUrl?`<img src="${doctor.photoUrl}" alt="">`:doctor.initials}</div>
         <div class="profile-info">
           ${foundingBadge}
           <h1>${fullName}</h1>
+          ${doctor.titulo?`<p class="profile-titulo">${doctor.titulo}</p>`:''}
           <div class="profile-meta">
             <span class="tag">${doctor.specialty}</span>
             ${videoBadge}
           </div>
           ${regHtml}
-          <p class="profile-verified"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Perfil verificado por Doclick</p>
+          ${doctor.verificado?`<p class="profile-verified"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Perfil verificado por Doclick</p>`:''}
           ${doctor.shortBio?`<p class="profile-bio-short">${doctor.shortBio}</p>`:''}
           <div class="profile-actions">
             ${(doctor.whatsappNumbers||[doctor.whatsappNumber]).map((num,i,arr)=>`
-            <a class="btn btn-primary" href="${buildWaLink(num,'Hola, vi tu perfil en Doclick y quiero agendar una cita.')}" target="_blank" rel="noopener" onclick="trackWhatsapp(${doctor.id},'${doctor.plan}')" aria-label="Agendar cita por WhatsApp${arr.length>1?` (línea ${i+1})`:''}">
+            <a class="btn btn-primary" href="${buildWaLink(num,'Hola, vi tu perfil en Doclick y quiero agendar una cita.')}" target="_blank" rel="noopener" onclick="trackWhatsapp(${doctor.id},'${plan}',${!!doctor.fundador})" aria-label="Agendar cita por WhatsApp${arr.length>1?` (línea ${i+1})`:''}">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
               Agendar por WhatsApp${arr.length>1?` (línea ${i+1})`:''}
             </a>`).join('')}
@@ -179,13 +184,13 @@ if(!doctor){
       </div>
     </section>
     ${heroVideoHtml}${specialtiesHtml}${bioHtml}${pastVideosHtml}${locationHtml}
-    <section style="padding:48px 0;" aria-label="¿Eres médico?">
+    <section style="padding:48px 0;" aria-label="¿Eres profesional de salud?">
       <div class="wrap">
         <div class="cta-banner" style="padding:36px;">
           <div>
-            <h2 style="font-size:22px;margin-bottom:8px;">¿Eres médico?</h2>
-            <p style="margin-bottom:18px;">Aparece en Doclick desde $5/mes. Video opcional. Pacientes buscando hoy.</p>
-            <a class="btn btn-copper" href="${buildWaLink(DOCLICK.contactWhatsapp,DOCLICK.contactMessage)}" target="_blank" rel="noopener" onclick="trackWhatsapp('recruitment')">Quiero aparecer</a>
+            <h2 style="font-size:22px;margin-bottom:8px;">¿Eres profesional de salud?</h2>
+            <p style="margin-bottom:18px;">Aparece gratis en Doclick. Prueba el Destacado o el Pro ${CONFIG.DIAS_PRUEBA} días gratis.</p>
+            <a class="btn btn-copper" href="registro.html">Registrarme gratis</a>
           </div>
         </div>
       </div>

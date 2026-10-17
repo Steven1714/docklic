@@ -61,8 +61,8 @@ const lp=document.getElementById('lp');
 if(!doctor){
   gtag('event','page_view');
   lp.innerHTML=`<div class="notfound"><h1>Enlace no encontrado</h1><p>Este enlace no existe o ha sido removido.</p><a href="index.html?${UTM}">Buscar médicos en Doclick</a></div>`;
-} else if(!hasFeaturedPlan(doctor)){
-  // La landing de Instagram es parte de Pro/Fundador; el plan Perfil va directo a su perfil.
+} else if(planEfectivo(doctor)!=='pro'){
+  // La landing de Instagram es parte del Pro; Destacado va directo a su perfil (y Básico, de ahí al directorio).
   window.location.replace(`perfil.html?id=${doctor.id}&${UTM}`);
 } else {
   const L=doctor.landing||{};
@@ -72,7 +72,7 @@ if(!doctor){
   root.setProperty('--accent-ink',inkFor(T.accent));
   document.getElementById('theme-color').content=T.deep;
 
-  const fullName=`${doctor.title} ${doctor.name}`;
+  const fullName=nombreVisible(doctor);
   const pageTitle=`${fullName} — ${doctor.specialty} | Doclick`;
   document.title=pageTitle;
   document.getElementById('og-title').content=pageTitle;
@@ -82,13 +82,13 @@ if(!doctor){
   const ogImg=coverUrl||doctor.photoUrl;
   if(ogImg)document.getElementById('og-image').content=`${DOCLICK.domain}/${ogImg}`;
   gtag('event','page_view',{page_title:pageTitle});
-  gtag('event','view_link_bio',{doctor_id:doctor.id,plan:doctor.plan});
+  gtag('event','view_link_bio',{doctor_id:doctor.id,plan:planEfectivo(doctor)});
 
   const numbers=doctor.whatsappNumbers||[doctor.whatsappNumber];
   const waMsg='Hola, vi tu Instagram y quiero agendar una cita.';
   const waMain=buildWaLink(numbers[0],waMsg);
-  const regParts=[doctor.mpps?`MPPS ${doctor.mpps}`:'',doctor.cmm?`CMM ${doctor.cmm}`:''].filter(Boolean);
-  const founder=doctor.plan==='fundador'?(doctor.title==='Dra.'?'Médica fundadora':'Médico fundador'):'Doclick Pro';
+  const reg=registroProfesional(doctor);
+  const founder=doctor.fundador?(doctor.title==='Dra.'?'Médica fundadora':'Médico fundador'):'Doclick Pro';
   let n=0;const num=()=>String(++n).padStart(2,'0');
 
   // Portada
@@ -106,7 +106,7 @@ if(!doctor){
           <div class="badge glass">${founder}</div>
           <h1><small>${doctor.title}</small>${esc(doctor.name)}</h1>
           <p class="spec">${esc(doctor.specialty)}</p>
-          ${regParts.length?`<p class="reg">${regParts.join(' · ')}</p>`:''}
+          ${reg?`<p class="reg">${reg}</p>`:''}
         </div>
       <a class="btn-main" id="main-cta" href="${waMain}" target="_blank" rel="noopener" onclick="trackLink(${doctor.id},'whatsapp')">
         <span class="ic">${ICON.wa}</span>
@@ -121,7 +121,7 @@ if(!doctor){
 
   const aboutHtml=!isPending(doctor.shortBio)?`
     <section class="block" aria-label="Sobre ${esc(fullName)}">
-      <p class="eyebrow"><i>${num()}</i>Sobre ${doctor.title==='Dra.'?'la doctora':'el doctor'}</p>
+      <p class="eyebrow"><i>${num()}</i>Sobre ${doctor.title==='Dra.'?'la doctora':doctor.title==='Dr.'?'el doctor':esc(doctor.name.split(' ')[0])}</p>
       <p class="lead">${esc(doctor.shortBio)}</p>
       ${(doctor.specialties||[]).length?`<ul class="chips" aria-label="Áreas de atención">${doctor.specialties.map(s=>`<li>${esc(s)}</li>`).join('')}</ul>`:''}
     </section>`:'';
@@ -155,9 +155,9 @@ if(!doctor){
   const footHtml=`
     <footer class="foot">
       <h2>¿Buscas otro especialista?</h2>
-      <p>En Doclick encuentras médicos verificados en video y les escribes directo por WhatsApp.</p>
+      <p>En Doclick encuentras profesionales de salud verificados, en video, y les escribes directo por WhatsApp.</p>
       <a class="explore" href="index.html?${UTM}#directorio" onclick="trackLink(${doctor.id},'directorio')">Explorar la guía Doclick ${ICON.arrow}</a>
-      <div class="sign"><span>Página creada por Doclick</span><a href="${buildWaLink(DOCLICK.contactWhatsapp,DOCLICK.contactMessage)}" target="_blank" rel="noopener" onclick="trackLink(${doctor.id},'recruitment')">¿Eres médico?</a></div>
+      <div class="sign"><span>Página creada por Doclick</span><a href="registro.html?${UTM}" onclick="trackLink(${doctor.id},'recruitment')">¿Eres profesional de salud?</a></div>
     </footer>`;
 
   lp.innerHTML=coverHtml+`<div class="lower">${aboutHtml+videoHtml+placeHtml+linksHtml}</div>`+footHtml;

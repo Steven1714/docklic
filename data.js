@@ -3,10 +3,34 @@
 // Sin localización geográfica hardcodeada
 // ============================================
 
-// plan: "fundador" | "pro" | "perfil"
-// planHasta: fecha de vencimiento del plan (AAAA-MM-DD). Solo control interno, no se muestra.
+const CONFIG = {
+  FORM_REGISTRO_URL: "#",           // pegar aquí el enlace del Google Form
+  FECHA_LANZAMIENTO: "2026-11-20",  // ajustar a la fecha real
+  DIAS_PRUEBA: 30,                  // Destacado y Pro (los fundadores tienen 60)
+  WHATSAPP_DOCLICK: "584267619312"
+};
+
+// Categorías del directorio (pestañas). Una pestaña sin perfiles no se muestra.
+const TIPOS = [
+  { id: "medico", label: "Médicos", titulo: "Médicos verificados" },
+  { id: "fisioterapia", label: "Fisioterapia", titulo: "Fisioterapia" },
+  { id: "enfermeria", label: "Enfermería a domicilio", titulo: "Enfermería a domicilio" }
+];
+
+// tipo: "medico" | "fisioterapia" | "enfermeria"
+// title: tratamiento antes del nombre ("Dr.", "Dra."). Vacío para licenciados: nunca "Dr.".
+// titulo: título visible debajo del nombre ("Médico cirujano", "Lic. en Fisioterapia", "Lic. en Enfermería").
+// plan: "basico" | "destacado" | "pro". Usar siempre planEfectivo(perfil), nunca perfil.plan directo.
+// prueba: null | { plan: "destacado" | "pro", hasta: "AAAA-MM-DD" } — prueba gratis (30 días).
+//   Los fundadores tienen 60 días: van con plan "pro" y se ajusta a mano al terminar.
+// planHasta: fecha de vencimiento del plan pagado (AAAA-MM-DD). Solo control interno, no se muestra.
+// fundador: true solo para los fundadores (sello "Fundador").
+// verificado: true solo si la colegiatura se comprobó (sello "Verificado").
+// mpps: registro MPPS. cmm: número del Colegio de Médicos de Monagas.
+//   Otros colegios (fisioterapia, enfermería): colegio (sigla, ej. "CFV") + colegiatura (número). Vacío = no se muestra.
+// telefono: (opcional) teléfono como se muestra en el plan Básico. Vacío = se forma desde whatsappNumber.
+// zona: zona de Maturín. domicilio: atiende a domicilio (filtro en Fisioterapia y Enfermería).
 // landing: (opcional) personalización de link.html — theme {deep, accent, paper, ink, soft}, coverUrl (foto vertical 4:5), logoUrl, facts [[dato, detalle], ...] (máx. 3, solo datos confirmados).
-// mpps / cmm: registro MPPS y Colegio de Médicos de Monagas. Vacío = no se muestra.
 const DOCTORS = [
   {
     id: 6,
@@ -15,7 +39,14 @@ const DOCTORS = [
     initials: "DG",
     specialty: "Neurocirugía",
     city: "",
-    plan: "fundador",
+    zona: "",
+    domicilio: false,
+    tipo: "medico",
+    titulo: "Médico cirujano",
+    plan: "pro",
+    prueba: null,
+    fundador: true,
+    verificado: true,
     planHasta: "",
     mpps: "",
     cmm: "",
@@ -38,7 +69,14 @@ const DOCTORS = [
     initials: "WV",
     specialty: "Urología y Cirugía General",
     city: "",
-    plan: "fundador",
+    zona: "Las Avenidas",
+    domicilio: false,
+    tipo: "medico",
+    titulo: "Médico cirujano",
+    plan: "pro",
+    prueba: null,
+    fundador: true,
+    verificado: true,
     planHasta: "",
     mpps: "71643",
     cmm: "3381",
@@ -68,7 +106,14 @@ const DOCTORS = [
     initials: "DG",
     specialty: "Neurocirugía",
     city: "",
-    plan: "fundador",
+    zona: "",
+    domicilio: false,
+    tipo: "medico",
+    titulo: "Médico cirujano",
+    plan: "pro",
+    prueba: null,
+    fundador: true,
+    verificado: true,
     planHasta: "",
     mpps: "31456",
     cmm: "1714",
@@ -97,7 +142,14 @@ const DOCTORS = [
     initials: "FP",
     specialty: "Psiquiatría",
     city: "",
-    plan: "fundador",
+    zona: "",
+    domicilio: false,
+    tipo: "medico",
+    titulo: "Médico cirujano",
+    plan: "pro",
+    prueba: null,
+    fundador: true,
+    verificado: true,
     planHasta: "",
     mpps: "69118",
     cmm: "6329",
@@ -123,14 +175,14 @@ const DOCTORS = [
 ];
 
 const DOCLICK = {
-  contactWhatsapp: "584267619312",
-  contactMessage: "Hola, soy médico y quiero unirme a Doclick. ¿Cómo empiezo?",
+  contactWhatsapp: CONFIG.WHATSAPP_DOCLICK,
+  contactMessage: "Hola, soy profesional de salud y quiero unirme a Doclick. ¿Cómo empiezo?",
   city: "",
   state: "",
   country: "",
   domain: "https://doclick.net",
   foundingSpotsTotal: 5,
-  foundingSpotsTaken: DOCTORS.filter(d => d.plan === "fundador").length
+  foundingSpotsTaken: DOCTORS.filter(d => d.fundador).length
 };
 
 function buildWaLink(number, message) {
@@ -141,10 +193,123 @@ function buildMapsLink(address) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
 }
 
-function hasFeaturedPlan(d) {
-  return d.plan === "fundador" || d.plan === "pro";
+// Fecha de hoy en hora local, como "AAAA-MM-DD" (para comparar con prueba.hasta y FECHA_LANZAMIENTO).
+function hoyISO() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
+// Plan con el que se muestra el perfil: el de la prueba mientras esté vigente; si no, el contratado.
+function planEfectivo(p) {
+  if (p.prueba && p.prueba.plan && p.prueba.hasta && p.prueba.hasta >= hoyISO()) return p.prueba.plan;
+  return p.plan || "basico";
+}
+
+// Destacado y Pro tienen página de perfil, foto y WhatsApp. Básico no.
+function tienePerfil(p) {
+  return planEfectivo(p) !== "basico";
+}
+
+// Compatibilidad con páginas viejas (mockup-portada.html): igual que tienePerfil
+function hasFeaturedPlan(p) {
+  return tienePerfil(p);
+}
+
+function nombreVisible(p) {
+  return [p.title, p.name].filter(Boolean).join(" ");
+}
+
+function getTipo(p) {
+  return p.tipo || "medico";
+}
+
+// "MPPS 71643 · CMM 3381" (o el colegio que corresponda)
+function registroProfesional(p) {
+  const num = p.colegiatura || p.cmm;
+  return [p.mpps ? `MPPS ${p.mpps}` : "", num ? `${p.colegio || "CMM"} ${num}` : ""].filter(Boolean).join(" · ");
+}
+
+// Teléfono como texto para el plan Básico: "584147667008" → "0414-7667008"
+function telefonoVisible(p) {
+  if (p.telefono) return p.telefono;
+  const n = String(p.whatsappNumber || "");
+  if (!n) return "";
+  const local = n.startsWith("58") ? `0${n.slice(2)}` : n;
+  return local.length === 11 ? `${local.slice(0, 4)}-${local.slice(4)}` : local;
+}
+
+// Orden del directorio: Pro y Destacado primero, mezclados con una semilla que cambia cada día
+// (nadie queda siempre arriba); Básico después, en orden alfabético.
+function ordenarPerfiles(lista) {
+  const dia = hoyISO();
+  let seed = 0;
+  for (const c of dia) seed = (seed * 31 + c.charCodeAt(0)) >>> 0;
+  const rand = () => { seed = (seed + 0x6D2B79F5) >>> 0; let t = seed; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+  // Se ordena por id antes de mezclar para que el resultado del día no dependa del orden en data.js
+  const pagos = lista.filter(tienePerfil).sort((a, b) => a.id - b.id);
+  for (let i = pagos.length - 1; i > 0; i--) { const j = Math.floor(rand() * (i + 1)); [pagos[i], pagos[j]] = [pagos[j], pagos[i]]; }
+  const basicos = lista.filter(p => !tienePerfil(p)).sort((a, b) => a.name.localeCompare(b.name, "es"));
+  return [...pagos, ...basicos];
 }
 
 function getDoctorById(id) {
   return DOCTORS.find(d => d.id === parseInt(id));
+}
+
+// Planes (se muestran en index.html y registro.html). incluye: [texto, sí/no]
+const PLANES = [
+  {
+    id: "basico", nombre: "Básico", precio: "Gratis", periodo: "",
+    desc: "Apareces en la guía con tus datos y tu colegiatura.",
+    incluye: [
+      ["Nombre, título, especialidad y colegiatura", true],
+      ["Teléfono visible", true],
+      ["Sello de Verificado", true],
+      ["Foto de perfil", false],
+      ["Dirección, Google Maps y horario", false],
+      ["Botón de WhatsApp", false],
+      ["Página de perfil propia", false]
+    ]
+  },
+  {
+    id: "destacado", nombre: "Destacado", precio: "$10", periodo: "/mes",
+    desc: "Tu perfil con foto, ubicación y WhatsApp directo.",
+    incluye: [
+      ["Todo lo del Básico", true],
+      ["Foto de perfil", true],
+      ["Dirección, Google Maps y horario", true],
+      ["Botón de WhatsApp directo", true],
+      ["Página de perfil propia", true],
+      ["Primero en los resultados", true],
+      ["Video en tu perfil", false]
+    ]
+  },
+  {
+    id: "pro", nombre: "Pro", precio: "$25", periodo: "/mes", recomendado: true,
+    desc: "Todo lo del Destacado, más video y herramientas para convertir visitas en pacientes.",
+    incluye: [
+      ["Todo lo del Destacado", true],
+      ["Video mensual profesional (lo grabamos nosotros)", true],
+      ["Perfil completo con video", true],
+      ["Landing personalizada para Instagram", true],
+      ["WhatsApp automatizado", true],
+      ["Estadísticas de visitas", true]
+    ]
+  }
+];
+
+function planCardsHtml(ctaFor) {
+  const check = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>`;
+  return PLANES.map(pl => `
+    <article class="price-card${pl.recomendado ? " featured" : ""}">
+      ${pl.recomendado ? `<div class="price-badge">Recomendado</div>` : ""}
+      <h3>${pl.nombre}</h3>
+      <div class="price-amount">${pl.precio}${pl.periodo ? ` <span>${pl.periodo}</span>` : ""}</div>
+      ${pl.id !== "basico" ? `<p class="price-launch">Pruébalo ${CONFIG.DIAS_PRUEBA} días gratis</p>` : `<p class="price-launch">Para siempre</p>`}
+      <p class="price-desc">${pl.desc}</p>
+      <ul class="price-features">${pl.incluye.map(([t, si]) => si
+        ? `<li>${check}${t}</li>`
+        : `<li class="is-excluded"><span class="dash" aria-hidden="true">–</span><span><span class="sr-only">No incluye: </span>${t}</span></li>`).join("")}</ul>
+      ${ctaFor ? ctaFor(pl) : ""}
+    </article>`).join("");
 }
