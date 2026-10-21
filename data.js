@@ -185,9 +185,9 @@ const DOCTORS = [
     domicilio: false,
     tipo: "medico",
     titulo: "Médico cirujano",
-    plan: "basico",
-    prueba: { plan: "pro", hasta: "2026-11-20" },
-    fundador: false,
+    plan: "pro",
+    prueba: null,
+    fundador: true, // quinta fundadora (2026-10-21)
     verificado: false, // pasar a true cuando se comprueben MPPS y CMM
     planHasta: "",
     mpps: "",
@@ -204,7 +204,7 @@ const DOCTORS = [
     schedule: "Lunes a viernes: 2:00pm–4:00pm",
     heroVideo: { title: "Conoce a la Dra. Yurkys Yance", duration: "", youtubeId: "", uploadDate: "" }, // completar youtubeId, duración y fecha al subir el video
     landing: {
-      theme: { deep: "#4A5D6B", accent: "#E8C766", paper: "#F7F3F0", ink: "#2B2422", soft: "#6B7C88" },
+      theme: { deep: "#2B2422", accent: "#E8C766", paper: "#F7F3F0", ink: "#2B2422", soft: "#6E6460" }, // paleta de su manual de marca (Tinta, Crayón, Papel)
       facts: [["Cirugía", "pediátrica"], ["ISAMICA", "Maturín"], ["Lun–Vie", "2:00 a 4:00 pm"]]
     },
     pastVideos: []
