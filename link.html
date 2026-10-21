@@ -115,7 +115,7 @@ if(!doctor){
       </a>
       ${numbers.length>1?`<div class="alt-lines">${numbers.slice(1).map((num,i)=>`<a class="glass" href="${buildWaLink(num,waMsg)}" target="_blank" rel="noopener" onclick="trackLink(${doctor.id},'whatsapp')">Línea ${i+2} · ${formatVePhone(num)}</a>`).join('')}</div>`:''}
       ${(L.facts||[]).length?`<div class="facts glass" role="list" aria-label="Datos destacados">${L.facts.slice(0,3).map(([b,s])=>`<div class="fact" role="listitem"><b>${esc(b)}</b><span>${esc(s)}</span></div>`).join('')}</div>`:''}
-      <p class="verified">${ICON.check}Perfil verificado por Doclick</p>
+      ${doctor.verificado?`<p class="verified">${ICON.check}Perfil verificado por Doclick</p>`:''}
       </div>
     </header>`;
 

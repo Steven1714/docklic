@@ -173,6 +173,41 @@ const DOCTORS = [
       facts: [["18 años", "como especialista"], ["ULA", "médico psiquiatra"], ["Online", "lun, miér y sáb"]]
     },
     pastVideos: []
+  },
+  {
+    id: 10,
+    title: "Dra.",
+    name: "Yurkys Yance",
+    initials: "YY",
+    specialty: "Cirugía Pediátrica",
+    city: "",
+    zona: "",
+    domicilio: false,
+    tipo: "medico",
+    titulo: "Médico cirujano",
+    plan: "basico",
+    prueba: { plan: "pro", hasta: "2026-11-20" },
+    fundador: false,
+    verificado: false, // pasar a true cuando se comprueben MPPS y CMM
+    planHasta: "",
+    mpps: "",
+    cmm: "",
+    hasVideo: true,
+    photoUrl: "", // pendiente: foto de la sesión del 18-10 (IMG_0993 en Drive, está en HEIC)
+    whatsappNumber: "584249338540", // número de sus flyers de Guía Médica Monagas: confirmar que es su WhatsApp
+    instagramHandle: "yurkyscirujanapediatra", // cuenta nueva (la personal @yurkysyance no va)
+    shortBio: "Cirujana pediatra. Evaluación de recién nacidos y niños, hernias, criptorquidia, circuncisión y ecografía pediátrica.",
+    longBio: "Médico cirujano egresada de la Universidad de Oriente (UDO) y cirujana pediatra. Evalúa recién nacidos y niños, y trata hernias inguinales y umbilicales, criptorquidia (testículo no descendido), fimosis y circuncisión, con ecografía pediátrica. Participa en la Sociedad Venezolana de Puericultura y Pediatría (SVPP), filial Monagas, y en jornadas de Emergencias Pediátricas.",
+    specialties: ["Cirugía pediátrica", "Recién nacidos", "Hernia inguinal y umbilical", "Criptorquidia", "Fimosis y circuncisión", "Ecografía pediátrica"],
+    address: "ISAMICA, Maturín, Monagas",
+    mapUrl: "https://maps.app.goo.gl/zUBjhBA6wU7VqdEr8", // mismo enlace de ISAMICA que el Dr. Dióver
+    schedule: "Lunes a viernes: 2:00pm–4:00pm",
+    heroVideo: { title: "Conoce a la Dra. Yurkys Yance", duration: "", youtubeId: "", uploadDate: "" }, // completar youtubeId, duración y fecha al subir el video
+    landing: {
+      theme: { deep: "#4A5D6B", accent: "#E8C766", paper: "#F7F3F0", ink: "#2B2422", soft: "#6B7C88" },
+      facts: [["Cirugía", "pediátrica"], ["ISAMICA", "Maturín"], ["Lun–Vie", "2:00 a 4:00 pm"]]
+    },
+    pastVideos: []
   }
 ];
 
