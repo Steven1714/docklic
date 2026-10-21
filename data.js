@@ -202,7 +202,7 @@ const DOCTORS = [
     address: "ISAMICA, Edificio de Consulta Externa, Consultorio 2, Planta Baja",
     mapUrl: "https://maps.app.goo.gl/zUBjhBA6wU7VqdEr8", // mismo enlace de ISAMICA que el Dr. Dióver
     schedule: "Lunes a viernes: 2:00pm–4:00pm",
-    heroVideo: { title: "Conoce a la Dra. Yurkys Yance", duration: "", youtubeId: "", uploadDate: "" }, // completar youtubeId, duración y fecha al subir el video
+    heroVideo: { title: "Conoce a la Dra. Yurkys Yance", duration: "0:41", youtubeId: "cGPfYQPuCwo", uploadDate: "2026-10-22" },
     landing: {
       theme: { deep: "#2B2422", accent: "#E8C766", paper: "#F7F3F0", ink: "#2B2422", soft: "#6E6460" }, // paleta de su manual de marca (Tinta, Crayón, Papel)
       coverUrl: "images/cover-dra-yurkys-yance.jpg?v=4", // IMG_1034
