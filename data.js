@@ -205,7 +205,7 @@ const DOCTORS = [
     heroVideo: { title: "Conoce a la Dra. Yurkys Yance", duration: "", youtubeId: "", uploadDate: "" }, // completar youtubeId, duración y fecha al subir el video
     landing: {
       theme: { deep: "#2B2422", accent: "#E8C766", paper: "#F7F3F0", ink: "#2B2422", soft: "#6E6460" }, // paleta de su manual de marca (Tinta, Crayón, Papel)
-      coverUrl: "images/cover-dra-yurkys-yance.jpg", // IMG_1036
+      coverUrl: "images/cover-dra-yurkys-yance.jpg?v=2", // IMG_1030
       facts: [["Cirugía", "pediátrica"], ["ISAMICA", "Consultorio 2, PB"], ["Lun–Vie", "2:00 a 4:00 pm"]]
     },
     pastVideos: []
