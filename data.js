@@ -53,7 +53,7 @@ const DOCTORS = [
     mpps: "",
     cmm: "",
     hasVideo: false,
-    photoUrl: "images/dr-domingo-guerra.jpg",
+    photoUrl: "images/dr-domingo-guerra.jpg?v=2", // IMG_2090 de la sesión de noviembre (Drive › Redes sociales › Noviembre)
     whatsappNumber: "584147667008",
     instagramHandle: "",
     shortBio: "Neurocirujano. [Pendiente: confirmar bio con el Dr. Guerra antes de publicar]",
